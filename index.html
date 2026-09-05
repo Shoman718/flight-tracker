@@ -7,7 +7,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Flight Tracker">
 <meta name="theme-color" content="#1a3a5c">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a3a5c'/><text y='70' x='50' text-anchor='middle' font-size='62'>✈</text></svg>">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAFLElEQVR4nO3dXVLbShRFYZvKKMJMwlTC6GAqMBOYRu7DLVHGyO1u9d8+u9dXlcfYIlp90pLl4nya6Pefv/9mvj/6+Hx/Pc9672FvTLxrGxV51zchYuzpGXeXFyZk5OgRdtMXJGQc0TLsJi9EyGihRdgPtS9AzGilRUtVQRMzWqtt6tCIJ2SMcGQLUjyhiRmjHGmtKGhixmilzWUHTcyYpaS9rKCJGbPlNng3aGKGipwWq+9DA0qSQTOdoeZekzeDJmaoSrW5GzQxQ92tRtlDw8qPoJnOiGKvVSY0rHwLmumMaK6bZULDylfQTGdEddkuExpWCBpWHk4nthuIb2uYCQ0rBA0rBA0rBA0rZy4I4YQJDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSu/Zh+Ai4+3l+rXeHx6bnAka2NCwwpBC2kx5VdH0A0Qog6CFsPiqEPQsELQgpjSx4UJWvUkqx7XqkIEvWI0K/7MLcgHfXliOcm4Rz7olbGAy0kHvXdCOclIkQ06QrgRjnE1kkHfC2WlkFb6WVuQC5oTiBpSQZfEvFL4K/2staSCHqk2EiLTJBP0kUBK/87H28vXn2giHvMMEt9Y6XmyUq/98fbCt0TMTA+6R8yu04wFeN/UX+vWKrzHp+eq1yqNZOaCIei0aXvollG4TmSUk7koRB4Wb9qUoNVOitrx4LjhQRNPPf4NbxsetOpFTW4kxKRtypbj8elZNuwoWFj7pl4UEjVam36XQ2laR5t60Y53hOlBb1SiTiEgfVM/KWyByL6LMBh6mv4sB9pKLfAVYg8/ofcwtfO5RW4RNAG3Ez3wsEETcX+5cSs91hoqaCKeJxXs5XmZHXaIoAlZx16we+dnVtjSQROyrstgle6syHywco2YtZU8zDXyXMpNaEL213Nqy05o+Oo5taUmNNN5TS0nNhMa07Wc2DzLgelaTmipLcfpxLZjJT0uDpnQGK7nXQ65Cb1hUuvbwsw5V6M+YJG9KJz9TADScs/P6K/YSW85SiYAxigJeQbpoDeEPZ96yJsQQW9yH4hBGyVxzg55I3tRWIK421EJ8yiLoK8ReL7oAV8LteXYQ7z53OLdEz5ofLdCtCmhg+4xnXO/O6di9YCvyX6wooh49IUNevR0VhTteEcIGzSwJ2TQinvZ0ZjO+0IG3UOUj3aRFi5opjOLKiVc0D0QiI9w96FXf0CJxZcWLuhLq8eNn5Z/OOnoxJu1gJjQaaEn9C2uk5uY77MM+lIqbgLxYx/0pciTm8WXZ9nbdrWBEJimZYOOhMWTj6BhhaDFMZ3LEHQFYtND0LBC0ML4H6AcQcMKQYtiOh9D0JUITwtBC2KRHEfQsELQYpjOdQi6ASLUQdBCWBj1CBpWLL9TiHUxoWGFoGGFoGGFoGGFoGGFoGGFoGGFoGGFoGGFoGGFoGGFoGGFoGHl4fP99Tz7IIAWPt9fz0xoWCFoWCFoWCFoWHk4nf7fTM8+EKDG1jATGlYIGla+gmbbgagu22VCw8q3oJnSiOa6WSY0rPwImimNKPZaZULDym7QTGmou9XozQlN1FCVajO55SBqqLnXJHtoWLkbNFMaKnJazJrQRI3ZchvM3nIQNWYpaa9oD03UGK20ueKLQqLGKEdaq4qTXziEHmqGZtVtO6Y1Wqttqvo+NFGjlRYtNY2RLQiOaDkUu0xXwkaOHv+7d90uEDb29NymDtv/EvfaRl1rTb2gI3JPM28U/Adzo9zzzN8hPAAAAABJRU5ErkJggg==">
 <title>Flight Tracker 2.0 — Scott Homan</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -168,6 +169,13 @@ hr.divider{border:none;border-top:1px solid #e8edf5;margin:8px 0}
 /* ── Responsive ──────────────────────────────────── */
 @media(max-width:1080px){.layout{grid-template-columns:1fr}.cal-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:580px){.cal-grid{grid-template-columns:1fr}.totals-bar{gap:8px}}
+/* ── Google Calendar panel ───────────────────────── */
+.gcal-status{display:flex;align-items:center;gap:7px;padding:8px 10px;border-radius:7px;font-size:.78rem;font-weight:600}
+.gcal-status.connected{background:#dcfce7;color:#15803d}
+.gcal-status.disconnected{background:#f1f5f9;color:#64748b}
+.gcal-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.gcal-dot.on{background:#16a34a}
+.gcal-dot.off{background:#94a3b8}
 /* ── SWA Import Modal ────────────────────────────── */
 .swa-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:10000;display:flex;align-items:center;justify-content:center;padding:16px}
 .swa-modal{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.25)}
@@ -307,6 +315,27 @@ hr.divider{border:none;border-top:1px solid #e8edf5;margin:8px 0}
         <input type="file" id="imp" accept=".json" style="display:none" onchange="importJSON(event)">
         <hr class="divider">
         <button class="btn btn-red btn-w" onclick="clearYear()">🗑 Clear This Year's Data</button>
+      </div>
+    </div>
+
+    <!-- Google Calendar panel -->
+    <div class="panel">
+      <div class="panel-hdr">📅 Google Calendar Sync</div>
+      <div class="panel-body" style="display:flex;flex-direction:column;gap:8px">
+        <div id="gcal-status-bar" class="gcal-status disconnected">
+          <div class="gcal-dot off" id="gcal-dot"></div>
+          <span id="gcal-status-txt">Not connected</span>
+        </div>
+        <button class="btn btn-ghost btn-w" id="gcal-connect-btn" onclick="gcalConnect()">🔗 Connect Google Calendar</button>
+        <div id="gcal-cal-wrap" style="display:none">
+          <div style="font-size:.7rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px">Sync to calendar</div>
+          <select id="gcal-cal-select" class="fg" style="width:100%;border:1px solid #dde3ed;border-radius:6px;padding:6px 9px;font-size:.83rem;font-family:inherit;outline:none" onchange="gcalSaveCalChoice()">
+            <option value="primary">Loading calendars…</option>
+          </select>
+        </div>
+        <button class="btn btn-blue btn-w" id="gcal-sync-btn" onclick="gcalSyncAll()" style="display:none">🔄 Sync All Flights</button>
+        <button class="btn btn-ghost btn-w" id="gcal-disconnect-btn" onclick="gcalDisconnect()" style="display:none">✕ Disconnect</button>
+        <div style="font-size:.68rem;color:#94a3b8;line-height:1.4">Flights are auto-synced when added or edited. Sync All pushes any missing events.</div>
       </div>
     </div>
 
@@ -849,13 +878,16 @@ function addFlight() {
 
   if (_editingFlightId) {
     const fl = yd().flights.find(f=>f.id===_editingFlightId);
-    if (fl) { fl.date=date; fl.from=from; fl.to=to; fl.num=num; fl.time=time; fl.arrive=arrive; fl.notes=notes; }
+    if (fl) { fl.date=date; fl.from=from; fl.to=to; fl.num=num; fl.time=time; fl.arrive=arrive; fl.notes=notes;
+      gcalSyncFlight(fl); }
     _editingFlightId = null;
     document.getElementById('fl-add-btn').textContent = '✈ Add Flight';
     document.getElementById('fl-cancel-btn').style.display = 'none';
     toast('Flight updated ✓');
   } else {
-    yd().flights.push({id:Date.now().toString(),date,from,to,num,time,arrive,notes});
+    const newFlight = {id:Date.now().toString(),date,from,to,num,time,arrive,notes};
+    yd().flights.push(newFlight);
+    gcalSyncFlight(newFlight);
     toast('Flight added ✓');
     setTimeout(() => suggestStateForFlight(date, to), 400);
   }
@@ -906,6 +938,7 @@ function fillTemplate(from, to, carrier, notes) {
 function delFlight(id) {
   if(!confirm('Remove this flight?')) return;
   if (_editingFlightId===id) cancelEdit();
+  gcalDeleteFlight(id);
   yd().flights=yd().flights.filter(f=>f.id!==id);
   save(); toast('Flight removed'); renderCalendar();
 }
@@ -1301,6 +1334,162 @@ function clearYear() {
   yd().days={}; save(); renderCalendar(); toast(`${Y} data cleared`);
 }
 
+// ── Google Calendar Sync ─────────────────────────────────────────────────────
+const GCAL_CLIENT_ID = '268717699636-trh89jvqi90tgttak9o5kcnegu65hc5e.apps.googleusercontent.com';
+const GCAL_SCOPE = 'https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.readonly';
+function gcalEventsUrl() {
+  const calId = localStorage.getItem('gcal_calendar_id') || 'primary';
+  return `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calId)}/events`;
+}
+
+let _gisClient = null;
+let _gcalToken = null;
+
+function _gcalEventMap() {
+  try { return JSON.parse(localStorage.getItem('gcal_event_map')||'{}'); } catch{return {};}
+}
+function _gcalSaveMap(m) { localStorage.setItem('gcal_event_map', JSON.stringify(m)); }
+
+function gcalInit() {
+  if (typeof google === 'undefined') { setTimeout(gcalInit, 500); return; }
+  _gisClient = google.accounts.oauth2.initTokenClient({
+    client_id: GCAL_CLIENT_ID,
+    scope: GCAL_SCOPE,
+    callback: resp => {
+      if (resp.error) { toast('⚠️ Google auth error: ' + resp.error); return; }
+      _gcalToken = resp.access_token;
+      localStorage.setItem('gcal_connected','1');
+      updateGCalUI(true);
+      gcalLoadCalendars();
+      toast('Google Calendar connected ✓');
+    }
+  });
+  // Auto-restore connected state
+  if (localStorage.getItem('gcal_connected') === '1') updateGCalUI(true);
+}
+
+function gcalConnect() {
+  if (!_gisClient) { toast('Google auth loading — try again in a moment'); return; }
+  _gisClient.requestAccessToken();
+}
+
+function gcalDisconnect() {
+  if (_gcalToken) google.accounts.oauth2.revoke(_gcalToken, ()=>{});
+  _gcalToken = null;
+  localStorage.removeItem('gcal_connected');
+  updateGCalUI(false);
+  toast('Google Calendar disconnected');
+}
+
+function updateGCalUI(connected) {
+  const bar  = document.getElementById('gcal-status-bar');
+  const dot  = document.getElementById('gcal-dot');
+  const txt  = document.getElementById('gcal-status-txt');
+  const conB = document.getElementById('gcal-connect-btn');
+  const calW = document.getElementById('gcal-cal-wrap');
+  const synB = document.getElementById('gcal-sync-btn');
+  const disB = document.getElementById('gcal-disconnect-btn');
+  if (connected) {
+    bar.className='gcal-status connected'; dot.className='gcal-dot on';
+    txt.textContent='Connected to Google Calendar';
+    conB.style.display='none'; calW.style.display=''; synB.style.display=''; disB.style.display='';
+  } else {
+    bar.className='gcal-status disconnected'; dot.className='gcal-dot off';
+    txt.textContent='Not connected';
+    conB.style.display=''; calW.style.display='none'; synB.style.display='none'; disB.style.display='none';
+  }
+}
+
+async function gcalLoadCalendars() {
+  if (!_gcalToken) return;
+  const r = await fetch('https://www.googleapis.com/calendar/v3/users/me/calendarList?minAccessRole=writer', {
+    headers: {'Authorization':'Bearer '+_gcalToken}
+  });
+  if (!r.ok) return;
+  const data = await r.json();
+  const sel = document.getElementById('gcal-cal-select');
+  const saved = localStorage.getItem('gcal_calendar_id') || 'primary';
+  sel.innerHTML = (data.items||[]).map(c =>
+    `<option value="${c.id}" ${c.id===saved||(!localStorage.getItem('gcal_calendar_id')&&c.primary)?'selected':''}>${c.summary}${c.primary?' (primary)':''}</option>`
+  ).join('');
+  // Auto-save selection so gcalEventsUrl() picks up the right one
+  if (sel.options.length) gcalSaveCalChoice();
+}
+
+function gcalSaveCalChoice() {
+  const sel = document.getElementById('gcal-cal-select');
+  if (sel && sel.value) localStorage.setItem('gcal_calendar_id', sel.value);
+}
+
+function _gcalBuildEvent(f) {
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const hasTime = f.time && f.arrive;
+  const start = hasTime ? {dateTime:`${f.date}T${f.time}:00`,timeZone:tz} : {date:f.date};
+  // If arrive is next-day (arrive < depart) add a day — simple heuristic
+  let arrDate = f.date;
+  if (hasTime && f.arrive < f.time) {
+    const d = new Date(f.date); d.setDate(d.getDate()+1);
+    arrDate = fmt(d);
+  }
+  const end = hasTime ? {dateTime:`${arrDate}T${f.arrive}:00`,timeZone:tz} : {date:f.date};
+  const lines = [
+    f.num  ? `Flight: ${f.num}` : '',
+    f.notes ? `Notes: ${f.notes}` : '',
+    'Synced by Flight Tracker 2.0'
+  ].filter(Boolean);
+  return {
+    summary: `✈ ${f.from} → ${f.to}${f.num?' ('+f.num+')':''}`,
+    description: lines.join('\n'),
+    start, end,
+    colorId: '1' // calendar blue
+  };
+}
+
+async function _gcalRequest(method, url, body) {
+  if (!_gcalToken) { gcalConnect(); return null; }
+  const opts = {
+    method,
+    headers: {'Authorization':'Bearer '+_gcalToken, 'Content-Type':'application/json'}
+  };
+  if (body) opts.body = JSON.stringify(body);
+  const r = await fetch(url, opts);
+  if (r.status === 401) { // token expired
+    _gcalToken = null; gcalConnect();
+    toast('Session expired — please re-authorize Google Calendar');
+    return null;
+  }
+  return r.ok && r.status !== 204 ? r.json() : r;
+}
+
+async function gcalSyncFlight(f) {
+  if (!_gcalToken) return;
+  const map = _gcalEventMap();
+  const event = _gcalBuildEvent(f);
+  let data;
+  if (map[f.id]) {
+    data = await _gcalRequest('PUT', gcalEventsUrl()+'/'+map[f.id], event);
+  } else {
+    data = await _gcalRequest('POST', gcalEventsUrl(), event);
+  }
+  if (data && data.id) { map[f.id]=data.id; _gcalSaveMap(map); }
+}
+
+async function gcalDeleteFlight(flightId) {
+  if (!_gcalToken) return;
+  const map = _gcalEventMap();
+  if (!map[flightId]) return;
+  await _gcalRequest('DELETE', gcalEventsUrl()+'/'+map[flightId]);
+  delete map[flightId]; _gcalSaveMap(map);
+}
+
+async function gcalSyncAll() {
+  if (!_gcalToken) { gcalConnect(); return; }
+  const {flights} = yd();
+  toast('Syncing ' + flights.length + ' flights…');
+  for (const f of flights) await gcalSyncFlight(f);
+  toast('✓ All flights synced to Google Calendar!');
+}
+
 // ── Airport → State map ──────────────────────────────────────────────────────
 const AIRPORT_STATE = {
   // Nevada
@@ -1513,6 +1702,7 @@ document.getElementById('owner-sub').textContent=D.ownerName;
 document.getElementById('fl-date').value=today();
 renderCalendar();
 _savedOnLoad = true; // enable dirty tracking after first render
+gcalInit(); // init Google Calendar auth
 </script>
 </body>
 </html>
