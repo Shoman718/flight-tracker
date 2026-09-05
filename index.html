@@ -1,1 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Flight Tracker">
+<meta name="theme-color" content="#1a3a5c">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAFLElEQVR4nO3dXVLbShRFYZvKKMJMwlTC6GAqMBOYRu7DLVHGyO1u9d8+u9dXlcfYIlp90pLl4nya6Pefv/9mvj/6+Hx/Pc9672FvTLxrGxV51zchYuzpGXeXFyZk5OgRdtMXJGQc0TLsJi9EyGihRdgPtS9AzGilRUtVQRMzWqtt6tCIJ2SMcGQLUjyhiRmjHGmtKGhixmilzWUHTcyYpaS9rKCJGbPlNng3aGKGipwWq+9DA0qSQTOdoeZekzeDJmaoSrW5GzQxQ92tRtlDw8qPoJnOiGKvVSY0rHwLmumMaK6bZULDylfQTGdEddkuExpWCBpWHk4nthuIb2uYCQ0rBA0rBA0rBA0rZy4I4YQJDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSsEDSu/Zh+Ai4+3l+rXeHx6bnAka2NCwwpBC2kx5VdH0A0Qog6CFsPiqEPQsELQgpjSx4UJWvUkqx7XqkIEvWI0K/7MLcgHfXliOcm4Rz7olbGAy0kHvXdCOclIkQ06QrgRjnE1kkHfC2WlkFb6WVuQC5oTiBpSQZfEvFL4K/2staSCHqk2EiLTJBP0kUBK/87H28vXn2giHvMMEt9Y6XmyUq/98fbCt0TMTA+6R8yu04wFeN/UX+vWKrzHp+eq1yqNZOaCIei0aXvollG4TmSUk7koRB4Wb9qUoNVOitrx4LjhQRNPPf4NbxsetOpFTW4kxKRtypbj8elZNuwoWFj7pl4UEjVam36XQ2laR5t60Y53hOlBb1SiTiEgfVM/KWyByL6LMBh6mv4sB9pKLfAVYg8/ofcwtfO5RW4RNAG3Ez3wsEETcX+5cSs91hoqaCKeJxXs5XmZHXaIoAlZx16we+dnVtjSQROyrstgle6syHywco2YtZU8zDXyXMpNaEL213Nqy05o+Oo5taUmNNN5TS0nNhMa07Wc2DzLgelaTmipLcfpxLZjJT0uDpnQGK7nXQ65Cb1hUuvbwsw5V6M+YJG9KJz9TADScs/P6K/YSW85SiYAxigJeQbpoDeEPZ96yJsQQW9yH4hBGyVxzg55I3tRWIK421EJ8yiLoK8ReL7oAV8LteXYQ7z53OLdEz5ofLdCtCmhg+4xnXO/O6di9YCvyX6wooh49IUNevR0VhTteEcIGzSwJ2TQinvZ0ZjO+0IG3UOUj3aRFi5opjOLKiVc0D0QiI9w96FXf0CJxZcWLuhLq8eNn5Z/OOnoxJu1gJjQaaEn9C2uk5uY77MM+lIqbgLxYx/0pciTm8WXZ9nbdrWBEJimZYOOhMWTj6BhhaDFMZ3LEHQFYtND0LBC0ML4H6AcQcMKQYtiOh9D0JUITwtBC2KRHEfQsELQYpjOdQi6ASLUQdBCWBj1CBpWLL9TiHUxoWGFoGGFoGGFoGGFoGGFoGGFoGGFoGGFoGGFoGGFoGGFoGGFoGHl4fP99Tz7IIAWPt9fz0xoWCFoWCFoWCFoWHk4nf7fTM8+EKDG1jATGlYIGla+gmbbgagu22VCw8q3oJnSiOa6WSY0rPwImimNKPZaZULDym7QTGmou9XozQlN1FCVajO55SBqqLnXJHtoWLkbNFMaKnJazJrQRI3ZchvM3nIQNWYpaa9oD03UGK20ueKLQqLGKEdaq4qTXziEHmqGZtVtO6Y1Wqttqvo+NFGjlRYtNY2RLQiOaDkUu0xXwkaOHv+7d90uEDb29NymDtv/EvfaRl1rTb2gI3JPM28U/Adzo9zzzN8hPAAAAABJRU5ErkJggg==">
+<title>Flight Tracker 2.0 — Scott Homan</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#eef2f7;color:#222;min-height:100vh}
 
+/* ── Header ─────────────────────────────────────── */
+.app-header{background:linear-gradient(135deg,#1a3a5c 0%,#2563eb 100%);color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.app-title{font-size:1.35rem;font-weight:700;letter-spacing:-.01em}
+.app-sub{font-size:.8rem;opacity:.75;margin-top:2px}
+.year-nav{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.15);padding:6px 16px;border-radius:22px}
+.year-nav button{background:none;border:none;color:#fff;font-size:1.3rem;cursor:pointer;line-height:1;padding:0 2px;opacity:.85}
+.year-nav button:hover{opacity:1}
+.year-nav span{font-size:1.05rem;font-weight:700;min-width:44px;text-align:center}
+
+/* ── Totals bar ──────────────────────────────────── */
+.totals-bar{background:#fff;padding:10px 24px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;border-bottom:1px solid #dde3ed;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:5px 13px;border-radius:18px;font-size:.84rem;font-weight:600}
+.chip-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.chip-nv{background:#dbeafe;color:#1e40af}.chip-nv .chip-dot{background:#2563eb}
+.chip-ca{background:#fef3c7;color:#92400e}.chip-ca .chip-dot{background:#d97706}
+.chip-out{background:#f3e8ff;color:#6b21a8}.chip-out .chip-dot{background:#7c3aed}
+.chip-tot{background:#f1f5f9;color:#475569}.chip-tot .chip-dot{background:#94a3b8}
+.totals-legend{margin-left:auto;font-size:.75rem;color:#94a3b8;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.leg-item{display:flex;align-items:center;gap:4px}
+.leg-swatch{width:13px;height:13px;border-radius:3px}
+
+/* ── Layout ──────────────────────────────────────── */
+.layout{display:grid;grid-template-columns:1fr 310px;gap:18px;padding:18px 22px;max-width:1380px;margin:0 auto}
+
+/* ── Calendar ─────────────────────────────────────── */
+.cal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.month-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.09);display:flex;flex-direction:column}
+.month-note-wrap{padding:5px 7px 6px;border-top:1px solid #f0f4fa}
+.month-note{width:100%;box-sizing:border-box;border:1px solid transparent;border-radius:5px;padding:4px 6px;font-size:.72rem;font-family:inherit;color:#374151;background:transparent;resize:none;outline:none;line-height:1.4;min-height:28px;transition:border-color .15s,background .15s}
+.month-note:hover{border-color:#dde3ed;background:#f8fafc}
+.month-note:focus{border-color:#2563eb;background:#fff}
+.month-note::placeholder{color:#bcc5d4}
+.month-name{background:#1e3a5f;color:#fff;padding:7px 11px;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.dow-row{display:grid;grid-template-columns:repeat(7,1fr);background:#f7f9fc;border-bottom:1px solid #e8edf5}
+.dow{text-align:center;padding:4px 1px;font-size:.64rem;font-weight:700;color:#94a3b8;text-transform:uppercase}
+.days-grid{display:grid;grid-template-columns:repeat(7,1fr);padding:3px;gap:2px}
+.dc{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:.75rem;border-radius:4px;cursor:pointer;user-select:none;transition:transform .1s,opacity .1s;position:relative;font-weight:500}
+.dc:hover{transform:scale(1.15);opacity:.85;z-index:2}
+.dc.empty{cursor:default;visibility:hidden}
+.dc.empty:hover{transform:none;opacity:1}
+.dc.unset{background:#f3f6fb;color:#7a8aaa}
+.dc.NV{background:#2563eb;color:#fff;font-weight:700}
+.dc.CA{background:#d97706;color:#fff;font-weight:700}
+.dc.OUT{background:#7c3aed;color:#fff;font-weight:700}
+.dc.today{outline:2.5px solid #ef4444;outline-offset:1px}
+.dc.past.unset{color:#c8d0dc}
+/* flight dot */
+.dc.has-flight::after{content:'✈';position:absolute;top:0;right:1px;font-size:.95rem;line-height:1;color:#ef4444;text-shadow:0 0 3px rgba(0,0,0,.4)}
+/* Transition slash is injected as a child <div> by JS — no CSS gradient needed */
+
+/* ── Sidebar ─────────────────────────────────────── */
+.sidebar{display:flex;flex-direction:column;gap:14px}
+.panel{background:#fff;border-radius:10px;box-shadow:0 1px 5px rgba(0,0,0,.09);overflow:hidden}
+.panel-hdr{background:#1e3a5f;color:#fff;padding:9px 13px;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:space-between}
+.panel-body{padding:13px}
+.tabs{display:flex}
+.tab{flex:1;padding:6px 4px;font-size:.75rem;font-weight:700;border:none;background:#f1f5f9;color:#64748b;cursor:pointer;font-family:inherit;letter-spacing:.02em;transition:background .15s}
+.tab.on{background:#1e3a5f;color:#fff}
+.tab:first-child{border-radius:0}
+
+/* ── Forms ───────────────────────────────────────── */
+.fg{margin-bottom:9px}
+.fg label{display:block;font-size:.72rem;font-weight:700;color:#64748b;margin-bottom:2px;text-transform:uppercase;letter-spacing:.04em}
+.fg input,.fg textarea,.fg select{width:100%;border:1px solid #dde3ed;border-radius:6px;padding:6px 9px;font-size:.83rem;font-family:inherit;outline:none;transition:border-color .15s}
+.fg input:focus,.fg textarea:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn{padding:7px 14px;border:none;border-radius:7px;cursor:pointer;font-size:.83rem;font-weight:700;font-family:inherit;transition:all .15s;display:inline-flex;align-items:center;gap:5px;justify-content:center}
+.btn-blue{background:#2563eb;color:#fff}.btn-blue:hover{background:#1d4ed8}
+.btn-green{background:#16a34a;color:#fff}.btn-green:hover{background:#15803d}
+.btn-amber{background:#d97706;color:#fff}.btn-amber:hover{background:#b45309}
+.btn-ghost{background:#f1f5f9;color:#374151;border:1px solid #dde3ed}.btn-ghost:hover{background:#e2e8f0}
+.btn-red{background:#fee2e2;color:#dc2626;border:1px solid #fca5a5}.btn-red:hover{background:#fecaca}
+.btn-w{width:100%}
+hr.divider{border:none;border-top:1px solid #e8edf5;margin:8px 0}
+
+/* ── Lookahead ───────────────────────────────────── */
+.la-item{display:flex;align-items:center;gap:7px;padding:4px 0;border-bottom:1px solid #f1f5f9;font-size:.8rem}
+.la-date{color:#94a3b8;font-size:.72rem;min-width:66px;flex-shrink:0}
+.badge{padding:2px 8px;border-radius:10px;font-size:.68rem;font-weight:700;flex-shrink:0}
+.badge-NV{background:#dbeafe;color:#1e40af}
+.badge-CA{background:#fef3c7;color:#92400e}
+.badge-OUT{background:#f3e8ff;color:#6b21a8}
+.badge-unset{background:#f1f5f9;color:#94a3b8}
+.la-flight{font-size:.7rem;color:#64748b;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ── Flight cards ────────────────────────────────── */
+.fl-card{border:1px solid #e8edf5;border-radius:8px;padding:9px 11px;margin-bottom:7px;position:relative}
+.fl-card.past{opacity:.45}
+.fl-dt{font-size:.7rem;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.fl-route{font-size:.9rem;font-weight:800;color:#1e3a5f;margin:2px 0}
+.fl-info{font-size:.74rem;color:#64748b}
+.fl-del{background:none;border:none;color:#fca5a5;cursor:pointer;font-size:.85rem;padding:2px 6px;border-radius:4px}
+.fl-del:hover{background:#fef2f2;color:#dc2626}
+.fl-edit{background:none;border:none;color:#93c5fd;cursor:pointer;font-size:.8rem;padding:2px 6px;border-radius:4px}
+.fl-edit:hover{background:#eff6ff;color:#2563eb}
+.empty-msg{color:#94a3b8;font-size:.83rem;text-align:center;padding:18px 0}
+
+/* ── Toast ───────────────────────────────────────── */
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#1e3a5f;color:#fff;padding:9px 22px;border-radius:22px;font-size:.83rem;font-weight:700;opacity:0;transition:opacity .3s;z-index:9999;pointer-events:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+#toast.show{opacity:1}
+
+/* ── Stats section ───────────────────────────────── */
+#stats-section{max-width:1380px;margin:0 auto;padding:0 22px 22px}
+.stats-panel{background:#fff;border-radius:10px;box-shadow:0 1px 5px rgba(0,0,0,.09);overflow:hidden}
+.stats-hdr{background:#1e3a5f;color:#fff;padding:10px 16px;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.stats-hdr-btns{display:flex;gap:6px;align-items:center}
+.stats-mode{display:flex;gap:0;border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,.3)}
+.smode-btn{padding:4px 12px;font-size:.75rem;font-weight:700;border:none;cursor:pointer;font-family:inherit;background:rgba(255,255,255,.12);color:rgba(255,255,255,.75);transition:all .15s}
+.smode-btn.on{background:#fff;color:#1e3a5f}
+.stats-body{padding:0;overflow-x:auto}
+.stbl{width:100%;border-collapse:collapse;font-size:.82rem}
+.stbl thead tr:first-child th{background:#f0f4fa;color:#1e3a5f;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:7px 10px;border-bottom:1px solid #dde3ed;white-space:nowrap;text-align:center}
+.stbl thead tr:first-child th.c-month{text-align:left}
+.stbl thead tr:last-child th{background:#e8eef7;color:#4b6892;font-size:.7rem;font-weight:600;padding:5px 10px;border-bottom:2px solid #c7d4e8;white-space:nowrap;text-align:center}
+.stbl thead tr:last-child th.c-month{text-align:left}
+.stbl tbody td{padding:6px 10px;border-bottom:1px solid #f1f5f9;white-space:nowrap;text-align:center}
+.stbl tbody tr:hover td{background:#f8fafc}
+.stbl .c-month{font-weight:700;color:#1e3a5f;background:#f8fafc;position:sticky;left:0;z-index:1;text-align:left}
+.stbl .c-nv{color:#1e40af}.stbl .c-ca{color:#92400e}.stbl .c-out{color:#6b21a8}.stbl .c-unk{color:#94a3b8}
+.stbl .pct{font-size:.75rem;color:#94a3b8;margin-left:3px}
+.stbl .c-total{font-weight:700;color:#374151}
+.stbl tfoot td{background:#1e3a5f;color:#fff;font-weight:700;padding:8px 10px;border:none;text-align:center}
+.stbl tfoot .c-month{background:#162d47;color:#93c5fd;text-align:left}
+.stbl tfoot .c-nv{color:#93c5fd}.stbl tfoot .c-ca{color:#fcd34d}.stbl tfoot .c-out{color:#c4b5fd}.stbl tfoot .c-unk{color:#94a3b8}.stbl tfoot .pct{color:rgba(255,255,255,.5)}
+.stbl tfoot .c-total{color:#fff}
+.stats-note{font-size:.72rem;color:#94a3b8;padding:8px 14px 10px;text-align:right}
+.stats-toggle-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:5px 13px;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer;font-family:inherit}
+.stats-toggle-btn:hover{background:rgba(255,255,255,.25)}
+/* ── Unsaved indicator ───────────────────────────── */
+#unsaved-dot{display:none;width:9px;height:9px;border-radius:50%;background:#ef4444;box-shadow:0 0 6px rgba(239,68,68,.7);margin-left:6px;flex-shrink:0;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+.unsaved-wrap{display:flex;align-items:center;gap:4px;font-size:.68rem;color:rgba(255,255,255,.7)}
+
+/* ── Note type toggle ────────────────────────────── */
+.note-share-row{display:flex;align-items:center;gap:6px;padding:3px 7px 2px;border-top:1px solid #f0f4fa}
+.note-share-lbl{font-size:.65rem;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.04em;flex:1}
+.note-share-chk{accent-color:#2563eb;cursor:pointer}
+.note-share-txt{font-size:.65rem;color:#64748b;cursor:pointer}
+
+/* ── Trip template buttons ───────────────────────── */
+.tmpl-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.tmpl-btn{padding:4px 9px;font-size:.71rem;font-weight:700;border:1px solid #dde3ed;border-radius:6px;background:#f8fafc;color:#374151;cursor:pointer;font-family:inherit;transition:all .13s;white-space:nowrap}
+.tmpl-btn:hover{background:#2563eb;color:#fff;border-color:#2563eb}
+
+/* ── Quarterly stats ─────────────────────────────── */
+.qtbl{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:2px}
+.qtbl thead th{background:#162d47;color:#93c5fd;padding:6px 10px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;text-align:center}
+.qtbl thead th.c-month{text-align:left}
+.qtbl tbody td{padding:6px 10px;border-bottom:1px solid #f1f5f9;text-align:center;white-space:nowrap}
+.qtbl tbody tr:hover td{background:#f8fafc}
+.qtbl .c-month{font-weight:700;color:#1e3a5f;background:#f8fafc;text-align:left}
+
+/* ── Responsive ──────────────────────────────────── */
+@media(max-width:1080px){.layout{grid-template-columns:1fr}.cal-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.cal-grid{grid-template-columns:1fr}.totals-bar{gap:8px}}
+/* ── Google Calendar panel ───────────────────────── */
+.gcal-status{display:flex;align-items:center;gap:7px;padding:8px 10px;border-radius:7px;font-size:.78rem;font-weight:600}
+.gcal-status.connected{background:#dcfce7;color:#15803d}
+.gcal-status.disconnected{background:#f1f5f9;color:#64748b}
+.gcal-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.gcal-dot.on{background:#16a34a}
+.gcal-dot.off{background:#94a3b8}
+/* ── SWA Import Modal ────────────────────────────── */
+.swa-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:10000;display:flex;align-items:center;justify-content:center;padding:16px}
+.swa-modal{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.25)}
+.swa-modal-hdr{background:linear-gradient(135deg,#304cb2,#1a3a5c);color:#fff;padding:14px 18px;font-weight:700;font-size:.95rem;display:flex;align-items:center;justify-content:space-between}
+.swa-modal-hdr button{background:none;border:none;color:rgba(255,255,255,.75);font-size:1.2rem;cursor:pointer;line-height:1;padding:2px 6px}
+.swa-modal-hdr button:hover{color:#fff}
+.swa-modal-body{padding:16px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:12px}
+.swa-hint{font-size:.78rem;color:#64748b;background:#f8fafc;border:1px solid #e8edf5;border-radius:7px;padding:8px 12px;line-height:1.5}
+.swa-paste{width:100%;min-height:160px;border:1px solid #dde3ed;border-radius:7px;padding:10px;font-size:.78rem;font-family:monospace;resize:vertical;outline:none;transition:border-color .15s}
+.swa-paste:focus{border-color:#304cb2;box-shadow:0 0 0 3px rgba(48,76,178,.12)}
+.swa-results{display:flex;flex-direction:column;gap:8px}
+.swa-flight-card{border:1px solid #dde3ed;border-radius:8px;padding:10px 13px;background:#f8fafc;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.swa-flight-info{flex:1}
+.swa-flight-route{font-size:.95rem;font-weight:800;color:#1e3a5f}
+.swa-flight-detail{font-size:.75rem;color:#64748b;margin-top:2px}
+.swa-no-results{color:#ef4444;font-size:.82rem;padding:8px;background:#fef2f2;border-radius:7px;border:1px solid #fca5a5}
+.swa-modal-footer{padding:12px 16px;border-top:1px solid #e8edf5;display:flex;gap:8px;justify-content:flex-end}
+/* ── Mobile (iPhone) ─────────────────────────────── */
+@media(max-width:480px){
+  .app-header{padding:10px 14px}
+  .app-title{font-size:1.1rem}
+  .totals-bar{padding:8px 12px;gap:6px}
+  .chip{font-size:.76rem;padding:4px 9px}
+  .totals-legend{display:none}
+  .layout{padding:10px 10px;gap:12px}
+  .cal-grid{grid-template-columns:1fr}
+  .dc{font-size:.68rem}
+  .panel-body{padding:10px}
+  .tabs .tab{font-size:.68rem;padding:5px 2px}
+  .tmpl-btn{font-size:.66rem;padding:3px 7px}
+  #stats-section{padding:0 10px 14px}
+  .stats-hdr{font-size:.8rem;flex-direction:column;align-items:flex-start;gap:6px}
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="app-header">
+  <div>
+    <div style="display:flex;align-items:center;gap:0">
+      <div class="app-title">✈ Flight Tracker 2.0</div>
+      <div class="unsaved-wrap"><div id="unsaved-dot" title="Unsaved changes — click Backup Data to save"></div></div>
+    </div>
+    <div class="app-sub" id="owner-sub">Scott Homan</div>
+  </div>
+  <div class="year-nav">
+    <button onclick="changeYear(-1)" title="Previous year">‹</button>
+    <span id="yr-lbl">2026</span>
+    <button onclick="changeYear(1)" title="Next year">›</button>
+  </div>
+</div>
+
+<!-- Totals bar -->
+<div class="totals-bar">
+  <div class="chip chip-nv"><div class="chip-dot"></div>Nevada: <strong id="t-nv">0</strong> days</div>
+  <div class="chip chip-ca"><div class="chip-dot"></div>California: <strong id="t-ca">0</strong> days</div>
+  <div class="chip chip-out"><div class="chip-dot"></div>Outside NV/CA: <strong id="t-out">0</strong> days</div>
+  <div class="chip chip-tot"><div class="chip-dot"></div>Logged: <strong id="t-log">0</strong> / <strong id="t-yr">365</strong></div>
+  <div class="totals-legend">
+    <div class="leg-item"><div class="leg-swatch" style="background:#2563eb"></div>Nevada</div>
+    <div class="leg-item"><div class="leg-swatch" style="background:#d97706"></div>California</div>
+    <div class="leg-item"><div class="leg-swatch" style="background:#7c3aed"></div>Outside NV/CA</div>
+    <span style="color:#c8d0dc">|</span>
+    <div class="leg-item">
+      <div class="leg-swatch" style="background:#2563eb;overflow:hidden;position:relative"><div style="position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 11px 11px 0;border-color:transparent #ef4444 transparent transparent;"></div></div>
+      Transition / no flight
+    </div>
+    <span style="color:#c8d0dc">|</span>
+    <span>Click to cycle NV → CA → Outside → NV &nbsp;|&nbsp; Shift+click to clear</span>
+  </div>
+  <button class="stats-toggle-btn" onclick="toggleStats()" id="stats-toggle-btn">📊 Monthly Stats</button>
+</div>
+
+<!-- Main layout -->
+<div class="layout">
+  <!-- Calendar -->
+  <div class="cal-grid" id="cal-grid"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+
+    <!-- Lookahead / Flights panel -->
+    <div class="panel">
+      <div class="panel-hdr">📅 30-Day View &amp; Flights</div>
+      <div class="tabs">
+        <button class="tab on" onclick="showTab('lookahead',this)">Schedule</button>
+        <button class="tab" onclick="showTab('add',this)">+ Add Flight</button>
+        <button class="tab" onclick="showTab('all',this)">All Flights</button>
+      </div>
+      <div class="panel-body">
+        <div id="tab-lookahead"></div>
+        <div id="tab-add" style="display:none">
+          <div style="font-size:.68rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">Quick Templates</div>
+          <div class="tmpl-row">
+            <button class="tmpl-btn" onclick="fillTemplate('LGB','RNO','WN','')">LGB → RNO ✈WN</button>
+            <button class="tmpl-btn" onclick="fillTemplate('RNO','LGB','WN','')">RNO → LGB ✈WN</button>
+            <button class="tmpl-btn" onclick="fillTemplate('SNA','RNO','JSX','')">SNA → RNO ✈JSX</button>
+            <button class="tmpl-btn" onclick="fillTemplate('RNO','SNA','JSX','')">RNO → SNA ✈JSX</button>
+          </div>
+          <hr class="divider">
+          <div class="fg"><label>Date</label><input type="date" id="fl-date"></div>
+          <div class="fr">
+            <div class="fg"><label>From</label><input type="text" id="fl-from" placeholder="LGB" maxlength="5"></div>
+            <div class="fg"><label>To</label><input type="text" id="fl-to" placeholder="RNO" maxlength="5"></div>
+          </div>
+          <div class="fr">
+            <div class="fg"><label>Flight #</label><input type="text" id="fl-num" placeholder="WN 3421"></div>
+            <div class="fg"></div>
+          </div>
+          <div class="fr">
+            <div class="fg"><label>Depart time</label><input type="time" id="fl-time"></div>
+            <div class="fg"><label>Arrive time</label><input type="time" id="fl-arrive"></div>
+          </div>
+          <div class="fg"><label>Notes</label><input type="text" id="fl-notes" placeholder="Optional — work trip, client visit…"></div>
+          <button class="btn btn-blue btn-w" id="fl-add-btn" onclick="addFlight()">✈ Add Flight</button>
+          <button class="btn btn-ghost btn-w" id="fl-cancel-btn" onclick="cancelEdit()" style="display:none">✕ Cancel Edit</button>
+          <hr class="divider">
+          <button class="btn btn-ghost btn-w" onclick="window.open('https://www.southwest.com/air/manage-reservations/index.html','_blank')">🔗 Open Southwest My Trips</button>
+          <button class="btn btn-ghost btn-w" onclick="openSWAImport()" style="border-color:#304cb2;color:#304cb2">📋 Import from Confirmation Email</button>
+        </div>
+        <div id="tab-all" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- Share / Export panel -->
+    <div class="panel">
+      <div class="panel-hdr">🚀 Share &amp; Export</div>
+      <div class="panel-body" style="display:flex;flex-direction:column;gap:8px">
+        <button class="btn btn-green btn-w" onclick="exportShareable()">📤 Export Shareable Page</button>
+        <button class="btn btn-amber btn-w" onclick="emailSummary()">📧 Email Summary</button>
+        <hr class="divider">
+        <button class="btn btn-blue btn-w" onclick="archivePDF()">📄 Tax Archive PDF</button>
+        <hr class="divider">
+        <button class="btn btn-ghost btn-w" onclick="exportJSON()">💾 Backup Data (JSON)</button>
+        <button class="btn btn-ghost btn-w" onclick="document.getElementById('imp').click()">📂 Restore from Backup</button>
+        <input type="file" id="imp" accept=".json" style="display:none" onchange="importJSON(event)">
+        <hr class="divider">
+        <button class="btn btn-red btn-w" onclick="clearYear()">🗑 Clear This Year's Data</button>
+      </div>
+    </div>
+
+    <!-- Google Calendar panel -->
+    <div class="panel">
+      <div class="panel-hdr">📅 Google Calendar Sync</div>
+      <div class="panel-body" style="display:flex;flex-direction:column;gap:8px">
+        <div id="gcal-status-bar" class="gcal-status disconnected">
+          <div class="gcal-dot off" id="gcal-dot"></div>
+          <span id="gcal-status-txt">Not connected</span>
+        </div>
+        <button class="btn btn-ghost btn-w" id="gcal-connect-btn" onclick="gcalConnect()">🔗 Connect Google Calendar</button>
+        <div id="gcal-cal-wrap" style="display:none">
+          <div style="font-size:.7rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px">Sync to calendar</div>
+          <select id="gcal-cal-select" class="fg" style="width:100%;border:1px solid #dde3ed;border-radius:6px;padding:6px 9px;font-size:.83rem;font-family:inherit;outline:none" onchange="gcalSaveCalChoice()">
+            <option value="primary">Loading calendars…</option>
+          </select>
+        </div>
+        <button class="btn btn-blue btn-w" id="gcal-sync-btn" onclick="gcalSyncAll()" style="display:none">🔄 Sync All Flights</button>
+        <button class="btn btn-ghost btn-w" id="gcal-disconnect-btn" onclick="gcalDisconnect()" style="display:none">✕ Disconnect</button>
+        <div style="font-size:.68rem;color:#94a3b8;line-height:1.4">Flights are auto-synced when added or edited. Sync All pushes any missing events.</div>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+</div><!-- /layout -->
+
+<!-- ── Monthly Statistics Section ───────────────────────────────────────── -->
+<div id="stats-section" style="display:none">
+  <div class="stats-panel">
+    <div class="stats-hdr">
+      <span>📊 Monthly Statistics — <span id="stats-yr-lbl">2026</span></span>
+      <div class="stats-hdr-btns">
+        <div class="stats-mode">
+          <button class="smode-btn on" onclick="setStatsMode('cal',this)">Calendar Days</button>
+          <button class="smode-btn" onclick="setStatsMode('wd',this)">Work Days (Mon–Fri)</button>
+        </div>
+        <button onclick="exportStatsCSV()" class="stats-toggle-btn" style="font-size:.73rem;padding:4px 10px">⬇ CSV</button>
+      </div>
+    </div>
+    <div class="stats-body">
+      <table class="stbl" id="stats-table">
+        <thead>
+          <tr>
+            <th class="c-month">Month</th>
+            <th class="c-total">Total Days</th>
+            <th class="c-nv" colspan="2">Nevada</th>
+            <th class="c-ca" colspan="2">California</th>
+            <th class="c-out" colspan="2">Outside NV/CA</th>
+            <th class="c-unk">Unlogged</th>
+          </tr>
+          <tr>
+            <th class="c-month"></th>
+            <th class="c-total"></th>
+            <th class="c-nv">Days</th><th class="c-nv">%</th>
+            <th class="c-ca">Days</th><th class="c-ca">%</th>
+            <th class="c-out">Days</th><th class="c-out">%</th>
+            <th class="c-unk">Days</th>
+          </tr>
+        </thead>
+        <tbody id="stats-tbody"></tbody>
+        <tfoot id="stats-tfoot"></tfoot>
+      </table>
+    </div>
+    <div class="stats-note" id="stats-note"></div>
+    <div class="stats-hdr" style="border-radius:0;margin-top:0">
+      <span>📅 Quarterly Breakdown — <span id="q-yr-lbl">2026</span></span>
+    </div>
+    <div class="stats-body">
+      <table class="qtbl" id="q-table">
+        <thead>
+          <tr>
+            <th class="c-month">Quarter</th>
+            <th>Months</th>
+            <th class="c-total" style="color:#fff">Total Days</th>
+            <th class="c-nv" colspan="2" style="color:#93c5fd">Nevada</th>
+            <th class="c-ca" colspan="2" style="color:#fcd34d">California</th>
+            <th class="c-out" colspan="2" style="color:#c4b5fd">Outside NV/CA</th>
+            <th class="c-unk" style="color:#94a3b8">Unlogged</th>
+          </tr>
+        </thead>
+        <tbody id="q-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<!-- Southwest Import Modal -->
+<div id="swa-modal-bg" class="swa-modal-bg" style="display:none" onclick="if(event.target===this)closeSWAImport()">
+  <div class="swa-modal">
+    <div class="swa-modal-hdr">
+      <span>✈ Import from Southwest Confirmation Email</span>
+      <button onclick="closeSWAImport()">✕</button>
+    </div>
+    <div class="swa-modal-body">
+      <div class="swa-hint">
+        <strong>How to use:</strong> Open your Southwest confirmation email, select all the text (Ctrl+A / Cmd+A), copy it, then paste it below. Works with both plain-text and forwarded emails.
+      </div>
+      <textarea class="swa-paste" id="swa-paste" placeholder="Paste your Southwest confirmation email text here…" oninput="parseSWAEmail()"></textarea>
+      <div id="swa-results"></div>
+    </div>
+    <div class="swa-modal-footer">
+      <button class="btn btn-ghost" onclick="closeSWAImport()">Cancel</button>
+      <button class="btn btn-blue" id="swa-import-btn" onclick="confirmSWAImport()" style="display:none">✈ Add Flights to Tracker</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Constants ────────────────────────────────────────────────────────────────
+const CYCLE = ['NV','CA','OUT']; // null removed — shift+click to clear a day
+const STATE_LABEL = {NV:'Nevada',CA:'California',OUT:'Outside NV/CA'};
+const MONTHS = ['January','February','March','April','May','June',
+                'July','August','September','October','November','December'];
+const DOW = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+const DOW3 = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MON3 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+// ── Seed data — includes all days + 7 flights from backup 2026-03-21 ────────
+const SEED_DATA = {"ownerName":"Scott Homan","years":{"2026":{"days":{"2026-01-01":"NV","2026-01-02":"NV","2026-01-03":"NV","2026-01-04":"NV","2026-01-05":"NV","2026-01-06":"NV","2026-01-07":"NV","2026-01-08":"NV","2026-01-09":"NV","2026-01-10":"NV","2026-01-11":"NV","2026-01-12":"NV","2026-01-13":"NV","2026-01-14":"NV","2026-01-15":"NV","2026-01-16":"NV","2026-01-17":"NV","2026-01-18":"NV","2026-01-19":"NV","2026-01-20":"NV","2026-01-21":"NV","2026-01-22":"NV","2026-01-23":"CA","2026-01-24":"CA","2026-01-25":"CA","2026-01-26":"CA","2026-01-27":"CA","2026-01-28":"CA","2026-01-29":"CA","2026-01-30":"CA","2026-01-31":"CA","2026-02-01":"CA","2026-02-02":"CA","2026-02-03":"CA","2026-02-04":"CA","2026-02-05":"CA","2026-02-06":"CA","2026-02-07":"NV","2026-02-08":"NV","2026-02-09":"NV","2026-02-10":"NV","2026-02-11":"NV","2026-02-12":"NV","2026-02-13":"NV","2026-02-14":"NV","2026-02-15":"NV","2026-02-16":"NV","2026-02-17":"NV","2026-02-18":"NV","2026-02-19":"NV","2026-02-20":"NV","2026-02-21":"CA","2026-02-22":"CA","2026-02-23":"CA","2026-02-24":"CA","2026-02-25":"CA","2026-02-26":"CA","2026-02-27":"CA","2026-02-28":"CA","2026-03-01":"CA","2026-03-02":"CA","2026-03-03":"CA","2026-03-04":"CA","2026-03-05":"CA","2026-03-06":"NV","2026-03-07":"NV","2026-03-08":"NV","2026-03-09":"NV","2026-03-10":"NV","2026-03-11":"NV","2026-03-12":"NV","2026-03-13":"NV","2026-03-14":"NV","2026-03-15":"NV","2026-03-16":"NV","2026-03-17":"NV","2026-03-18":"NV","2026-03-19":"NV","2026-03-20":"NV","2026-03-21":"NV","2026-03-22":"NV","2026-03-23":"CA","2026-03-24":"CA","2026-03-25":"CA","2026-03-26":"CA","2026-03-27":"CA","2026-03-28":"CA","2026-03-29":"CA","2026-03-30":"CA","2026-03-31":"CA","2026-04-01":"CA","2026-04-02":"CA","2026-04-03":"CA","2026-04-04":"CA","2026-04-05":"CA","2026-04-06":"CA","2026-04-07":"NV","2026-04-08":"NV","2026-04-09":"NV","2026-04-10":"NV","2026-04-11":"NV","2026-04-12":"NV","2026-04-13":"NV","2026-04-14":"NV","2026-04-15":"NV","2026-04-16":"NV","2026-04-17":"NV","2026-04-18":"NV","2026-04-19":"NV","2026-04-20":"NV","2026-04-21":"NV","2026-04-22":"NV","2026-04-23":"OUT","2026-04-24":"OUT","2026-04-25":"OUT","2026-04-26":"NV","2026-04-27":"NV","2026-04-28":"NV","2026-04-29":"CA","2026-04-30":"CA","2026-05-01":"CA","2026-05-02":"CA","2026-05-03":"CA","2026-05-04":"CA","2026-05-05":"CA","2026-05-06":"CA","2026-05-07":"CA","2026-05-08":"CA","2026-05-09":"NV","2026-05-10":"NV","2026-05-11":"NV","2026-05-12":"OUT","2026-05-13":"OUT","2026-05-14":"OUT","2026-05-15":"OUT","2026-05-16":"OUT","2026-05-17":"OUT","2026-05-18":"OUT","2026-05-19":"OUT","2026-05-20":"OUT","2026-05-21":"OUT","2026-05-22":"OUT","2026-05-23":"OUT","2026-05-24":"OUT","2026-05-25":"OUT","2026-05-26":"OUT","2026-05-27":"OUT","2026-05-28":"OUT","2026-05-29":"NV","2026-05-30":"NV","2026-05-31":"NV","2026-06-01":"CA","2026-06-02":"CA","2026-06-03":"CA","2026-06-04":"CA","2026-06-05":"CA","2026-06-06":"CA","2026-06-07":"CA","2026-06-08":"CA","2026-06-09":"CA","2026-06-10":"CA","2026-06-11":"CA","2026-06-12":"CA","2026-06-13":"CA","2026-06-14":"CA","2026-06-15":"NV","2026-06-16":"NV","2026-06-17":"NV","2026-06-18":"NV","2026-06-19":"NV","2026-06-20":"NV","2026-06-21":"NV","2026-06-22":"NV","2026-06-23":"NV","2026-06-24":"NV","2026-06-25":"NV","2026-06-26":"NV","2026-06-27":"NV","2026-06-28":"NV","2026-06-29":"NV","2026-06-30":"NV","2026-07-01":"NV","2026-07-02":"NV","2026-07-03":"NV","2026-07-04":"NV","2026-07-05":"NV","2026-07-06":"NV","2026-07-07":"NV","2026-07-08":"NV","2026-07-09":"NV","2026-07-10":"NV","2026-07-11":"NV","2026-07-12":"NV","2026-07-13":"NV","2026-07-14":"NV","2026-07-15":"NV","2026-07-16":"NV","2026-07-17":"NV","2026-07-18":"NV","2026-07-19":"NV","2026-07-20":"NV","2026-07-21":"NV","2026-07-22":"NV","2026-07-23":"NV","2026-07-24":"NV","2026-07-25":"NV","2026-07-26":"NV","2026-07-27":"NV","2026-07-28":"NV","2026-07-29":"NV","2026-07-30":"NV","2026-07-31":"NV","2026-08-01":"NV","2026-08-02":"NV","2026-08-03":"NV","2026-08-04":"NV","2026-08-05":"NV","2026-08-06":"NV","2026-08-07":"NV","2026-08-08":"NV","2026-08-09":"NV","2026-08-10":"NV","2026-08-11":"NV","2026-08-12":"NV","2026-08-13":"NV","2026-08-14":"NV","2026-08-15":"NV","2026-08-16":"CA","2026-08-17":"CA","2026-08-18":"CA","2026-08-19":"CA","2026-08-20":"CA","2026-08-21":"CA","2026-08-22":"CA","2026-08-23":"NV","2026-08-24":"NV","2026-08-25":"NV","2026-08-26":"NV","2026-08-27":"NV","2026-08-28":"NV","2026-08-29":"NV","2026-08-30":"CA","2026-08-31":"CA","2026-09-01":"CA","2026-09-02":"CA","2026-09-03":"CA","2026-09-04":"CA","2026-09-05":"CA","2026-09-06":"CA","2026-09-07":"CA","2026-09-08":"CA","2026-09-09":"CA","2026-09-10":"CA","2026-09-11":"CA","2026-09-12":"CA","2026-09-13":"CA","2026-09-14":"CA","2026-09-15":"CA","2026-09-16":"CA","2026-09-17":"CA","2026-09-18":"CA","2026-09-19":"OUT","2026-09-20":"OUT","2026-09-21":"OUT","2026-09-22":"OUT","2026-09-23":"OUT","2026-09-24":"OUT","2026-09-25":"OUT","2026-09-26":"OUT","2026-09-27":"NV","2026-09-28":"NV","2026-09-29":"NV","2026-09-30":"NV","2026-10-01":"NV","2026-10-02":"NV","2026-10-03":"NV","2026-10-04":"NV","2026-10-05":"NV","2026-10-06":"NV","2026-10-07":"NV","2026-10-08":"NV","2026-10-09":"NV","2026-10-10":"NV","2026-10-11":"CA","2026-10-12":"CA","2026-10-13":"CA","2026-10-14":"CA","2026-10-15":"CA","2026-10-16":"CA","2026-10-17":"CA","2026-10-18":"CA","2026-10-19":"CA","2026-10-20":"CA","2026-10-21":"CA","2026-10-22":"CA","2026-10-23":"CA","2026-10-24":"NV","2026-10-25":"NV","2026-10-26":"NV","2026-10-27":"NV","2026-10-28":"NV","2026-10-29":"NV","2026-10-30":"NV","2026-10-31":"NV","2026-11-01":"NV","2026-11-02":"NV","2026-11-03":"NV","2026-11-04":"NV","2026-11-05":"NV","2026-11-06":"NV","2026-11-07":"NV","2026-11-08":"NV","2026-11-09":"NV","2026-11-10":"NV","2026-11-11":"NV","2026-11-12":"NV","2026-11-13":"NV","2026-11-14":"NV","2026-11-15":"NV","2026-11-16":"NV","2026-11-17":"NV","2026-11-18":"NV","2026-11-19":"NV","2026-11-20":"NV","2026-11-21":"CA","2026-11-22":"CA","2026-11-23":"CA","2026-11-24":"CA","2026-11-25":"CA","2026-11-26":"CA","2026-11-27":"CA","2026-11-28":"CA","2026-11-29":"CA","2026-11-30":"CA","2026-12-01":"CA","2026-12-02":"CA","2026-12-03":"CA","2026-12-04":"CA","2026-12-05":"CA","2026-12-06":"CA","2026-12-07":"CA","2026-12-08":"CA","2026-12-09":"CA","2026-12-10":"CA","2026-12-11":"CA","2026-12-12":"CA","2026-12-13":"CA","2026-12-14":"NV","2026-12-15":"NV","2026-12-16":"NV","2026-12-17":"NV","2026-12-18":"NV","2026-12-19":"NV","2026-12-20":"CA","2026-12-21":"CA","2026-12-22":"CA","2026-12-23":"CA","2026-12-24":"CA","2026-12-25":"CA","2026-12-26":"CA","2026-12-27":"CA","2026-12-28":"CA","2026-12-29":"NV","2026-12-30":"NV","2026-12-31":"NV"},"flights":[{"id":"1774117501469","date":"2026-04-07","from":"LGB","to":"RNO","num":"AUV56Q","time":"","notes":""},{"id":"1774117610459","date":"2026-04-23","from":"RNO","to":"AUS","num":"BP6MO9","time":"","notes":"Travel with Tammy"},{"id":"1774117660945","date":"2026-04-26","from":"AUS","to":"RNO","num":"BP6MO9","time":"","notes":"travel with Tammy"},{"id":"1774117701570","date":"2026-04-29","from":"RNO","to":"LGB","num":"A364ZP","time":"","notes":""},{"id":"1774117764469","date":"2026-05-09","from":"LGB","to":"RNO","num":"A364ZP","time":"18:15","notes":""},{"id":"1774117867686","date":"2026-03-23","from":"RNO","to":"SNA","num":"JSX","time":"","notes":""},{"id":"1774118483923","date":"2026-05-31","from":"RNO","to":"LGB","num":"AA9HWD","time":"22:25","notes":""}]}}};
+
+// ── App state ────────────────────────────────────────────────────────────────
+let D = { ownerName:'Scott Homan', years:{} };
+let Y = new Date().getFullYear();
+let activeTab = 'lookahead';
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+const fmt = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const today = () => fmt(new Date());
+const isLeap = y => (y%4===0&&y%100!==0)||y%400===0;
+const diy = y => isLeap(y)?366:365;
+const pd = s => { const [y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d); };
+
+function yd() {
+  if (!D.years[Y]) D.years[Y] = {days:{}, flights:[]};
+  return D.years[Y];
+}
+
+// ── Persistence ──────────────────────────────────────────────────────────────
+let _savedOnLoad = false;
+function markDirty() { if(_savedOnLoad) document.getElementById('unsaved-dot').style.display='inline-block'; }
+function clearDirty() { document.getElementById('unsaved-dot').style.display='none'; }
+function save() { try { localStorage.setItem('tt_v3', JSON.stringify(D)); markDirty(); } catch(e){} }
+
+function load() {
+  try {
+    const raw = localStorage.getItem('tt_v3');
+    if (raw) { D = JSON.parse(raw); return; }
+  } catch(e) {}
+  // First run — seed with full backup data (days + flights)
+  D = JSON.parse(JSON.stringify(SEED_DATA));
+}
+
+// ── Calendar ─────────────────────────────────────────────────────────────────
+function renderCalendar() {
+  const grid = document.getElementById('cal-grid');
+  grid.innerHTML = '';
+  const {days, flights} = yd();
+  const td = today();
+  const flDays = new Set(flights.map(f => f.date));
+
+  for (let m = 0; m < 12; m++) {
+    const card = document.createElement('div');
+    card.className = 'month-card';
+
+    const _noteRaw = (yd().notes||{})[m]||null;
+    const noteVal = _noteRaw ? (typeof _noteRaw==='string' ? _noteRaw : (_noteRaw.text||'')) : '';
+    const noteShared = _noteRaw && typeof _noteRaw==='object' ? (_noteRaw.shared||false) : false;
+    card.innerHTML = `<div class="month-name">${MONTHS[m]}</div>
+      <div class="dow-row">${DOW.map(d=>`<div class="dow">${d}</div>`).join('')}</div>
+      <div class="days-grid" id="m${m}"></div>
+      <div class="month-note-wrap">
+        <textarea class="month-note" rows="2" placeholder="Add a note for ${MONTHS[m]}…" onchange="saveMonthNote(${m},this.value)" onblur="saveMonthNote(${m},this.value)">${noteVal}</textarea>
+        <div class="note-share-row">
+          <span class="note-share-lbl">Note visibility</span>
+          <input type="checkbox" class="note-share-chk" id="nshare-${m}" ${noteShared?'checked':''} onchange="setNoteShared(${m},this.checked)">
+          <label class="note-share-txt" for="nshare-${m}">Include in exports</label>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+
+    const dg = card.querySelector(`#m${m}`);
+    const firstDow = new Date(Y, m, 1).getDay();
+    const lastD = new Date(Y, m+1, 0).getDate();
+
+    for (let i=0;i<firstDow;i++) {
+      const e=document.createElement('div');e.className='dc empty';dg.appendChild(e);
+    }
+    for (let d=1;d<=lastD;d++) {
+      const ds = `${Y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const st = days[ds]||null;
+      // Check if this day is a state transition with no matching flight
+      const prevDs = fmt(new Date(Y, m, d-1));
+      const prevSt = days[prevDs]||null;
+      const isTransition = st && prevSt && st !== prevSt;
+      const missingFlight = isTransition && !flDays.has(ds) && !flDays.has(prevDs);
+      const el = document.createElement('div');
+      let cls = `dc ${st||'unset'}`;
+      if (ds===td) cls+=' today';
+      if (ds<td && !st) cls+=' past';
+      if (flDays.has(ds)) cls+=' has-flight';
+      if (missingFlight) cls+=' unmatched-transition';
+      el.className=cls; el.textContent=d;
+      if (missingFlight) {
+        el.title=`${MONTHS[m]} ${d} — ${STATE_LABEL[st]} (transition from ${STATE_LABEL[prevSt]} — no flight logged)`;
+        // Red corner triangle flag — simple, no gradients, works everywhere
+        const flag = document.createElement('div');
+        flag.style.cssText = 'position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 11px 11px 0;border-color:transparent #ef4444 transparent transparent;pointer-events:none;';
+        el.appendChild(flag);
+      } else {
+        el.title=`${MONTHS[m]} ${d} — ${st?STATE_LABEL[st]:'click to set'}`;
+      }
+      el.onclick=e=>cycleDay(ds,e);
+      dg.appendChild(el);
+    }
+  }
+  updateTotals();
+  renderSide();
+  if(document.getElementById('stats-section').style.display!=='none') renderStats();
+}
+
+function _noteObj(m) {
+  const n = (yd().notes||{})[m];
+  if (!n) return {text:'',shared:false};
+  return typeof n==='string' ? {text:n,shared:false} : {text:n.text||'',shared:n.shared||false};
+}
+function saveMonthNote(m, val) {
+  const yr = yd();
+  if (!yr.notes) yr.notes = {};
+  const shared = _noteObj(m).shared;
+  if (val && val.trim()) yr.notes[m] = {text:val.trim(), shared};
+  else delete yr.notes[m];
+  save();
+}
+function setNoteShared(m, shared) {
+  const yr = yd();
+  if (!yr.notes) yr.notes = {};
+  const existing = _noteObj(m);
+  if (existing.text) yr.notes[m] = {text:existing.text, shared};
+  else if (yr.notes[m]) yr.notes[m] = {text:'', shared};
+  save();
+}
+
+function cycleDay(ds, evt) {
+  const {days} = yd();
+  if (evt && evt.shiftKey) {
+    delete days[ds]; // shift+click clears the day
+  } else {
+    const idx = CYCLE.indexOf(days[ds]);
+    days[ds] = CYCLE[(idx+1)%CYCLE.length]; // NV→CA→OUT→NV, no blank step
+  }
+  save(); renderCalendar();
+}
+
+function updateTotals() {
+  const {days}=yd();
+  let nv=0,ca=0,out=0;
+  Object.values(days).forEach(s=>{if(s==='NV')nv++;else if(s==='CA')ca++;else if(s==='OUT')out++;});
+  document.getElementById('t-nv').textContent=nv;
+  document.getElementById('t-ca').textContent=ca;
+  document.getElementById('t-out').textContent=out;
+  document.getElementById('t-log').textContent=nv+ca+out;
+  document.getElementById('t-yr').textContent=diy(Y);
+  document.getElementById('yr-lbl').textContent=Y;
+}
+
+function changeYear(delta) { Y+=delta; renderCalendar(); renderStats(); }
+
+// ── Sidebar tabs ─────────────────────────────────────────────────────────────
+function showTab(name, btn) {
+  activeTab=name;
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  ['lookahead','add','all'].forEach(id=>{
+    document.getElementById('tab-'+id).style.display=(id===name)?'':'none';
+  });
+  if(name!=='add') renderSide();
+}
+
+function renderSide() { renderLookahead(); renderAllFlights(); }
+
+function renderLookahead() {
+  const el = document.getElementById('tab-lookahead');
+  const {days,flights}=yd();
+  const td=today();
+  const flMap={};
+  flights.forEach(f=>{ if(!flMap[f.date]) flMap[f.date]=[]; flMap[f.date].push(f); });
+
+  let html='';
+  const cur=new Date();
+  for(let i=0;i<30;i++) {
+    const ds=fmt(cur);
+    const st=days[ds]||null;
+    const fls=flMap[ds]||[];
+    const bc=st?`badge-${st}`:'badge-unset';
+    const bl=st||'?';
+    const fi=fls.map(f=>`✈${f.from}→${f.to}`).join(' ');
+    html+=`<div class="la-item">
+      <div class="la-date">${DOW3[cur.getDay()]} ${cur.getMonth()+1}/${cur.getDate()}</div>
+      <span class="badge ${bc}">${bl}</span>
+      ${fi?`<span class="la-flight">${fi}</span>`:''}
+    </div>`;
+    cur.setDate(cur.getDate()+1);
+  }
+  el.innerHTML=html||'<div class="empty-msg">No data for next 30 days</div>';
+}
+
+function renderAllFlights() {
+  const el=document.getElementById('tab-all');
+  const {flights}=yd();
+  const td=today();
+  const sorted=[...flights].sort((a,b)=>a.date.localeCompare(b.date));
+  if(!sorted.length){el.innerHTML='<div class="empty-msg">No flights added yet</div>';return;}
+  const up=sorted.filter(f=>f.date>=td);
+  const past=sorted.filter(f=>f.date<td);
+  let html='';
+  if(up.length){html+='<div style="font-size:.68rem;font-weight:700;color:#94a3b8;margin-bottom:5px;letter-spacing:.05em">UPCOMING</div>';up.forEach(f=>html+=flCard(f,false));}
+  if(past.length){html+=`<div style="font-size:.68rem;font-weight:700;color:#94a3b8;margin:10px 0 5px;letter-spacing:.05em">PAST (${past.length})</div>`;past.slice(-3).forEach(f=>html+=flCard(f,true));if(past.length>3)html+=`<div class="empty-msg" style="font-size:.72rem">${past.length-3} older flights not shown</div>`;}
+  el.innerHTML=html;
+}
+
+function flCard(f,past) {
+  const d=pd(f.date);
+  const dt=`${DOW3[d.getDay()]} ${MON3[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+  const dep=f.time?fmtTime(f.time):'';
+  const arr=f.arrive?fmtTime(f.arrive):'';
+  const tm=dep&&arr?' · '+dep+' → '+arr:dep?' · '+dep:'';
+  return `<div class="fl-card ${past?'past':''}">
+    <div style="display:flex;gap:4px;position:absolute;top:6px;right:6px">
+      <button class="fl-edit" onclick="editFlight('${f.id}')" title="Edit flight">✏</button>
+      <button class="fl-del" onclick="delFlight('${f.id}')" title="Delete flight">✕</button>
+    </div>
+    <div class="fl-dt">✈ ${dt}${tm}</div>
+    <div class="fl-route">${f.from} → ${f.to}</div>
+    <div class="fl-info">${f.num?'#'+f.num:''} ${f.notes||''}</div>
+  </div>`;
+}
+
+function fmtTime(t) {
+  const [h,m]=t.split(':').map(Number);
+  return `${h%12||12}:${String(m).padStart(2,'0')} ${h>=12?'PM':'AM'}`;
+}
+
+// ── Monthly Statistics ────────────────────────────────────────────────────────
+let statsMode = 'cal'; // 'cal' = calendar days, 'wd' = weekdays Mon-Fri
+
+function setStatsMode(mode, btn) {
+  statsMode = mode;
+  document.querySelectorAll('.smode-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderStats();
+}
+
+function toggleStats() {
+  const el = document.getElementById('stats-section');
+  const btn = document.getElementById('stats-toggle-btn');
+  const showing = el.style.display !== 'none';
+  el.style.display = showing ? 'none' : '';
+  btn.textContent = showing ? '📊 Monthly Stats' : '📊 Hide Stats';
+  if (!showing) renderStats();
+  if (!showing) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function computeMonthStats(m) {
+  // m = 0-based month index; returns object with counts for cal days and weekdays
+  const {days} = yd();
+  const lastD = new Date(Y, m+1, 0).getDate();
+  const r = {total:0, calNV:0, calCA:0, calOUT:0, calUnk:0,
+              wdTotal:0, wdNV:0,  wdCA:0,  wdOUT:0,  wdUnk:0};
+  for (let d = 1; d <= lastD; d++) {
+    const ds = `${Y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const dow = new Date(Y, m, d).getDay(); // 0=Sun,6=Sat
+    const isWD = dow >= 1 && dow <= 5;
+    const st = days[ds] || null;
+    r.total++;
+    if (st==='NV') r.calNV++; else if (st==='CA') r.calCA++; else if (st==='OUT') r.calOUT++; else r.calUnk++;
+    if (isWD) {
+      r.wdTotal++;
+      if (st==='NV') r.wdNV++; else if (st==='CA') r.wdCA++; else if (st==='OUT') r.wdOUT++; else r.wdUnk++;
+    }
+  }
+  return r;
+}
+
+function pct(n, d) { return d===0 ? '—' : Math.round(n/d*100)+'%'; }
+
+function statsRow(label, r, isFoot) {
+  const cal = statsMode === 'cal';
+  const tot  = cal ? r.total  : r.wdTotal;
+  const nv   = cal ? r.calNV  : r.wdNV;
+  const ca   = cal ? r.calCA  : r.wdCA;
+  const out  = cal ? r.calOUT : r.wdOUT;
+  const unk  = cal ? r.calUnk : r.wdUnk;
+  const logged = nv + ca + out;
+  const tag  = isFoot ? 'td' : 'td';
+  return `<tr>
+    <${tag} class="c-month">${label}</${tag}>
+    <${tag} class="c-total">${tot}</${tag}>
+    <${tag} class="c-nv">${nv}</${tag}><${tag} class="c-nv"><span class="pct">${pct(nv,logged)}</span></${tag}>
+    <${tag} class="c-ca">${ca}</${tag}><${tag} class="c-ca"><span class="pct">${pct(ca,logged)}</span></${tag}>
+    <${tag} class="c-out">${out}</${tag}><${tag} class="c-out"><span class="pct">${pct(out,logged)}</span></${tag}>
+    <${tag} class="c-unk">${unk}</${tag}>
+  </tr>`;
+}
+
+function renderStats() {
+  document.getElementById('stats-yr-lbl').textContent = Y;
+  const tbody = document.getElementById('stats-tbody');
+  const tfoot = document.getElementById('stats-tfoot');
+
+  // Build per-month rows
+  let bodyHtml = '';
+  const annual = {total:0,calNV:0,calCA:0,calOUT:0,calUnk:0,wdTotal:0,wdNV:0,wdCA:0,wdOUT:0,wdUnk:0};
+  for (let m = 0; m < 12; m++) {
+    const r = computeMonthStats(m);
+    bodyHtml += statsRow(MONTHS[m], r, false);
+    for (const k of Object.keys(annual)) annual[k] += r[k];
+  }
+  tbody.innerHTML = bodyHtml;
+
+  // Annual totals footer
+  tfoot.innerHTML = statsRow(`TOTAL ${Y}`, annual, true);
+
+  // Note below table
+  const modeLabel = statsMode === 'cal' ? 'calendar days (all 7 days/week)' : 'weekdays Mon–Fri only';
+  document.getElementById('stats-note').textContent =
+    `Percentages are based on logged days only. Showing ${modeLabel}. Unlogged days are not included in %.`;
+
+  // Quarterly breakdown
+  document.getElementById('q-yr-lbl').textContent = Y;
+  const quarters = [
+    {label:'Q1', months:[0,1,2], abbr:'Jan – Mar'},
+    {label:'Q2', months:[3,4,5], abbr:'Apr – Jun'},
+    {label:'Q3', months:[6,7,8], abbr:'Jul – Sep'},
+    {label:'Q4', months:[9,10,11], abbr:'Oct – Dec'},
+  ];
+  const cal = statsMode === 'cal';
+  let qHtml = '';
+  quarters.forEach(q => {
+    const acc = {total:0,calNV:0,calCA:0,calOUT:0,calUnk:0,wdTotal:0,wdNV:0,wdCA:0,wdOUT:0,wdUnk:0};
+    q.months.forEach(m => { const r=computeMonthStats(m); for(const k of Object.keys(acc)) acc[k]+=r[k]; });
+    const tot=cal?acc.total:acc.wdTotal, nv=cal?acc.calNV:acc.wdNV, ca=cal?acc.calCA:acc.wdCA,
+          out=cal?acc.calOUT:acc.wdOUT, unk=cal?acc.calUnk:acc.wdUnk, logged=nv+ca+out;
+    qHtml+=`<tr>
+      <td class="c-month">${q.label}</td>
+      <td style="color:#64748b;font-size:.78rem">${q.abbr}</td>
+      <td class="c-total" style="font-weight:700">${tot}</td>
+      <td class="c-nv">${nv}</td><td class="c-nv"><span class="pct">${pct(nv,logged)}</span></td>
+      <td class="c-ca">${ca}</td><td class="c-ca"><span class="pct">${pct(ca,logged)}</span></td>
+      <td class="c-out">${out}</td><td class="c-out"><span class="pct">${pct(out,logged)}</span></td>
+      <td class="c-unk">${unk}</td>
+    </tr>`;
+  });
+  document.getElementById('q-tbody').innerHTML = qHtml;
+}
+
+function exportStatsCSV() {
+  const cal = statsMode === 'cal';
+  const header = `Month,Total ${cal?'Cal':'Weekday'} Days,NV Days,NV %,CA Days,CA %,Outside Days,Outside %,Unlogged\n`;
+  let rows = '';
+  const annual = {total:0,calNV:0,calCA:0,calOUT:0,calUnk:0,wdTotal:0,wdNV:0,wdCA:0,wdOUT:0,wdUnk:0};
+  for (let m = 0; m < 12; m++) {
+    const r = computeMonthStats(m);
+    const tot = cal?r.total:r.wdTotal, nv=cal?r.calNV:r.wdNV, ca=cal?r.calCA:r.wdCA,
+          out=cal?r.calOUT:r.wdOUT, unk=cal?r.calUnk:r.wdUnk, logged=nv+ca+out;
+    rows += `${MONTHS[m]},${tot},${nv},${pct(nv,logged)},${ca},${pct(ca,logged)},${out},${pct(out,logged)},${unk}\n`;
+    for(const k of Object.keys(annual)) annual[k]+=r[k];
+  }
+  // Annual totals
+  const tot=cal?annual.total:annual.wdTotal, nv=cal?annual.calNV:annual.wdNV,
+        ca=cal?annual.calCA:annual.wdCA, out=cal?annual.calOUT:annual.wdOUT,
+        unk=cal?annual.calUnk:annual.wdUnk, logged=nv+ca+out;
+  rows += `ANNUAL TOTAL ${Y},${tot},${nv},${pct(nv,logged)},${ca},${pct(ca,logged)},${out},${pct(out,logged)},${unk}\n`;
+  dlFile(`travel-stats-${Y}-${statsMode}-${today()}.csv`, header+rows, 'text/csv');
+  toast('Stats CSV downloaded');
+}
+
+function buildStatsTableHTML(days) {
+  // Used for shareable export — returns HTML table string
+  const modes = [{label:'Calendar Days (All Days)', key:'cal'}, {label:'Work Days (Mon–Fri)', key:'wd'}];
+  let html = '';
+  for (const mode of modes) {
+    const cal = mode.key === 'cal';
+    html += `<h3 style="font-size:.9rem;font-weight:700;color:#1e3a5f;margin:20px 0 8px;border-left:4px solid ${cal?'#2563eb':'#16a34a'};padding-left:10px">${mode.label}</h3>`;
+    html += `<table style="width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.1);margin-bottom:12px">`;
+    html += `<thead><tr style="background:#f0f4fa">
+      <th style="padding:7px 10px;text-align:left;font-size:.72rem;font-weight:700;color:#1e3a5f;white-space:nowrap">Month</th>
+      <th style="padding:7px 10px;text-align:right;font-size:.72rem;font-weight:700;color:#374151">Total</th>
+      <th style="padding:7px 10px;text-align:right;font-size:.72rem;font-weight:700;color:#1e40af">NV Days</th>
+      <th style="padding:7px 10px;text-align:right;font-size:.72rem;font-weight:700;color:#1e40af">NV %</th>
+      <th style="padding:7px 10px;text-align:right;font-size:.72rem;font-weight:700;color:#92400e">CA Days</th>
+      <th style="padding:7px 10px;text-align:right;font-size:.72rem;font-weight:700;color:#92400e">CA %</th>
+      <th style="padding:7px 10px;text-align:right;font-size:.72rem;font-weight:700;color:#6b21a8">Outside</th>
+      <th style="padding:7px 10px;text-align:right;font-size:.72rem;font-weight:700;color:#6b21a8">Out %</th>
+      <th style="padding:7px 10px;text-align:right;font-size:.72rem;font-weight:700;color:#94a3b8">Unlogged</th>
+    </tr></thead><tbody>`;
+    const annual = {total:0,calNV:0,calCA:0,calOUT:0,calUnk:0,wdTotal:0,wdNV:0,wdCA:0,wdOUT:0,wdUnk:0};
+    for (let m = 0; m < 12; m++) {
+      // Inline compute for export (uses passed days obj)
+      const lastD = new Date(Y, m+1, 0).getDate();
+      let tot=0,nv=0,ca=0,out=0,unk=0,wdTot=0,wdNV=0,wdCA=0,wdOUT=0,wdUnk=0;
+      for (let d=1;d<=lastD;d++) {
+        const ds=`${Y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const dow=new Date(Y,m,d).getDay(); const isWD=dow>=1&&dow<=5;
+        const st=days[ds]||null;
+        tot++;
+        if(st==='NV')nv++;else if(st==='CA')ca++;else if(st==='OUT')out++;else unk++;
+        if(isWD){wdTot++;if(st==='NV')wdNV++;else if(st==='CA')wdCA++;else if(st==='OUT')wdOUT++;else wdUnk++;}
+      }
+      annual.total+=tot;annual.calNV+=nv;annual.calCA+=ca;annual.calOUT+=out;annual.calUnk+=unk;
+      annual.wdTotal+=wdTot;annual.wdNV+=wdNV;annual.wdCA+=wdCA;annual.wdOUT+=wdOUT;annual.wdUnk+=wdUnk;
+      const T=cal?tot:wdTot, NV=cal?nv:wdNV, CA=cal?ca:wdCA, OUT=cal?out:wdOUT, UNK=cal?unk:wdUnk;
+      const logged=NV+CA+OUT;
+      const bg = m%2===0?'#fff':'#fafbfc';
+      html+=`<tr style="background:${bg}">
+        <td style="padding:6px 10px;font-weight:700;color:#1e3a5f;font-size:.82rem">${MONTHS[m]}</td>
+        <td style="padding:6px 10px;text-align:right;font-weight:700;font-size:.82rem">${T}</td>
+        <td style="padding:6px 10px;text-align:right;color:#1e40af;font-size:.82rem">${NV}</td>
+        <td style="padding:6px 10px;text-align:right;color:#1e40af;font-size:.82rem;font-weight:700">${pct(NV,logged)}</td>
+        <td style="padding:6px 10px;text-align:right;color:#92400e;font-size:.82rem">${CA}</td>
+        <td style="padding:6px 10px;text-align:right;color:#92400e;font-size:.82rem;font-weight:700">${pct(CA,logged)}</td>
+        <td style="padding:6px 10px;text-align:right;color:#6b21a8;font-size:.82rem">${OUT}</td>
+        <td style="padding:6px 10px;text-align:right;color:#6b21a8;font-size:.82rem;font-weight:700">${pct(OUT,logged)}</td>
+        <td style="padding:6px 10px;text-align:right;color:#94a3b8;font-size:.82rem">${UNK}</td>
+      </tr>`;
+    }
+    // Totals row
+    const T=cal?annual.total:annual.wdTotal,NV=cal?annual.calNV:annual.wdNV,CA=cal?annual.calCA:annual.wdCA,OUT=cal?annual.calOUT:annual.wdOUT,UNK=cal?annual.calUnk:annual.wdUnk;
+    const logged=NV+CA+OUT;
+    html+=`<tr style="background:#1e3a5f;color:#fff">
+      <td style="padding:8px 10px;font-weight:700;color:#93c5fd">ANNUAL TOTAL ${Y}</td>
+      <td style="padding:8px 10px;text-align:right;font-weight:700">${T}</td>
+      <td style="padding:8px 10px;text-align:right;color:#93c5fd">${NV}</td>
+      <td style="padding:8px 10px;text-align:right;color:#93c5fd;font-weight:700">${pct(NV,logged)}</td>
+      <td style="padding:8px 10px;text-align:right;color:#fcd34d">${CA}</td>
+      <td style="padding:8px 10px;text-align:right;color:#fcd34d;font-weight:700">${pct(CA,logged)}</td>
+      <td style="padding:8px 10px;text-align:right;color:#c4b5fd">${OUT}</td>
+      <td style="padding:8px 10px;text-align:right;color:#c4b5fd;font-weight:700">${pct(OUT,logged)}</td>
+      <td style="padding:8px 10px;text-align:right;color:#94a3b8">${UNK}</td>
+    </tr>`;
+    html += `</tbody></table>`;
+  }
+  html += `<p style="font-size:.72rem;color:#94a3b8;margin-top:4px">Percentages based on logged days only. Unlogged days excluded from %.</p>`;
+  return html;
+}
+
+// ── Flight CRUD ──────────────────────────────────────────────────────────────
+let _editingFlightId = null;
+
+function addFlight() {
+  const date=document.getElementById('fl-date').value;
+  const from=document.getElementById('fl-from').value.trim().toUpperCase();
+  const to=document.getElementById('fl-to').value.trim().toUpperCase();
+  const num=document.getElementById('fl-num').value.trim();
+  const time=document.getElementById('fl-time').value;
+  const arrive=document.getElementById('fl-arrive').value;
+  const notes=document.getElementById('fl-notes').value.trim();
+  if(!date||!from||!to){alert('Date, origin, and destination are required.');return;}
+
+  if (_editingFlightId) {
+    const fl = yd().flights.find(f=>f.id===_editingFlightId);
+    if (fl) { fl.date=date; fl.from=from; fl.to=to; fl.num=num; fl.time=time; fl.arrive=arrive; fl.notes=notes;
+      gcalSyncFlight(fl); }
+    _editingFlightId = null;
+    document.getElementById('fl-add-btn').textContent = '✈ Add Flight';
+    document.getElementById('fl-cancel-btn').style.display = 'none';
+    toast('Flight updated ✓');
+  } else {
+    const newFlight = {id:Date.now().toString(),date,from,to,num,time,arrive,notes};
+    yd().flights.push(newFlight);
+    gcalSyncFlight(newFlight);
+    toast('Flight added ✓');
+    setTimeout(() => suggestStateForFlight(date, to), 400);
+  }
+  save();
+  ['fl-date','fl-from','fl-to','fl-num','fl-time','fl-arrive','fl-notes'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('fl-date').value=today();
+  renderCalendar();
+}
+
+function editFlight(id) {
+  const fl = yd().flights.find(f=>f.id===id);
+  if (!fl) return;
+  // Switch to the Add tab and pre-fill fields
+  const addTabBtn = [...document.querySelectorAll('.tab')].find(b=>b.textContent.includes('Add'));
+  showTab('add', addTabBtn);
+  document.getElementById('fl-date').value = fl.date;
+  document.getElementById('fl-from').value = fl.from;
+  document.getElementById('fl-to').value = fl.to;
+  document.getElementById('fl-num').value = fl.num||'';
+  document.getElementById('fl-time').value = fl.time||'';
+  document.getElementById('fl-arrive').value = fl.arrive||'';
+  document.getElementById('fl-notes').value = fl.notes||'';
+  _editingFlightId = id;
+  document.getElementById('fl-add-btn').textContent = '✈ Save Changes';
+  document.getElementById('fl-cancel-btn').style.display = 'block';
+  // Scroll the form into view
+  document.getElementById('fl-date').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function cancelEdit() {
+  _editingFlightId = null;
+  document.getElementById('fl-add-btn').textContent = '✈ Add Flight';
+  document.getElementById('fl-cancel-btn').style.display = 'none';
+  ['fl-date','fl-from','fl-to','fl-num','fl-time','fl-arrive','fl-notes'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('fl-date').value=today();
+}
+
+function fillTemplate(from, to, carrier, notes) {
+  const addTabBtn = [...document.querySelectorAll('.tab')].find(b=>b.textContent.includes('Add'));
+  showTab('add', addTabBtn);
+  document.getElementById('fl-from').value = from;
+  document.getElementById('fl-to').value = to;
+  document.getElementById('fl-num').value = carrier;
+  document.getElementById('fl-notes').value = notes;
+  document.getElementById('fl-date').focus();
+}
+
+function delFlight(id) {
+  if(!confirm('Remove this flight?')) return;
+  if (_editingFlightId===id) cancelEdit();
+  gcalDeleteFlight(id);
+  yd().flights=yd().flights.filter(f=>f.id!==id);
+  save(); toast('Flight removed'); renderCalendar();
+}
+
+// ── Export shareable page ────────────────────────────────────────────────────
+function exportShareable() {
+  const {days,flights}=yd();
+  const now=new Date();
+  const nowFmt=now.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+
+  // Totals
+  let nv=0,ca=0,out=0;
+  Object.values(days).forEach(s=>{if(s==='NV')nv++;else if(s==='CA')ca++;else if(s==='OUT')out++;});
+
+  // Upcoming flights table
+  const up=flights.filter(f=>f.date>=fmt(now)).sort((a,b)=>a.date.localeCompare(b.date));
+  const flRows=up.length===0
+    ?'<tr><td colspan="4" style="text-align:center;color:#94a3b8;padding:14px">No upcoming flights logged</td></tr>'
+    :up.map(f=>{const d=pd(f.date);return`<tr><td>${MON3[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}</td><td><strong>${f.from} → ${f.to}</strong></td><td>${f.num||'—'}</td><td>${f.notes||'—'}</td></tr>`;}).join('');
+
+  // 3-month calendars
+  const COL={NV:'#2563eb',CA:'#d97706',OUT:'#7c3aed'};
+  let calHtml='';
+  for(let i=0;i<3;i++){
+    const cd=new Date(now.getFullYear(),now.getMonth()+i,1);
+    const mo=cd.getMonth(), yr=cd.getFullYear();
+    const first=new Date(yr,mo,1).getDay();
+    const last=new Date(yr,mo+1,0).getDate();
+    let rows=`<tr>${DOW.map(d=>`<td style="text-align:center;font-size:10px;color:#94a3b8;font-weight:700;padding:4px 2px">${d}</td>`).join('')}</tr><tr>`;
+    let col=0;
+    for(let p=0;p<first;p++){rows+='<td></td>';col++;}
+    for(let d=1;d<=last;d++){
+      const ds=`${yr}-${String(mo+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const st=days[ds];
+      const bg=st?COL[st]:'#f3f6fb'; const fg=st?'#fff':'#7a8aaa';
+      rows+=`<td style="text-align:center;padding:2px"><div style="background:${bg};color:${fg};border-radius:4px;padding:3px 1px;font-size:11px;font-weight:${st?700:400}">${d}</div></td>`;
+      col++;
+      if(col%7===0&&d<last) rows+='</tr><tr>';
+    }
+    rows+='</tr>';
+    calHtml+=`<div style="flex:1;min-width:195px;margin-bottom:12px">
+      <div style="background:#1e3a5f;color:#fff;padding:7px 11px;font-weight:700;font-size:.82rem;border-radius:8px 8px 0 0;letter-spacing:.05em;text-transform:uppercase">${MONTHS[mo]} ${yr}</div>
+      <table style="width:100%;border-collapse:collapse;background:#fff;border-radius:0 0 8px 8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08)">${rows}</table>
+    </div>`;
+  }
+
+  const html=`<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Travel Schedule — ${D.ownerName} — ${Y}</title>
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',Arial,sans-serif;background:#eef2f7;color:#222}
+.hdr{background:linear-gradient(135deg,#1a3a5c,#2563eb);color:#fff;padding:22px 30px}.hdr h1{font-size:1.5rem;font-weight:700;margin-bottom:4px}.hdr .sub{font-size:.85rem;opacity:.75}
+.content{max-width:920px;margin:0 auto;padding:22px 18px}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.stat{padding:10px 18px;border-radius:10px;font-weight:700;font-size:.9rem}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.1);margin-bottom:24px}
+th{background:#1e3a5f;color:#fff;padding:9px 13px;text-align:left;font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+td{padding:8px 13px;border-bottom:1px solid #f1f5f9;font-size:.85rem}tr:last-child td{border-bottom:none}
+.sec{font-size:1rem;font-weight:700;color:#1e3a5f;margin-bottom:13px;border-left:4px solid #2563eb;padding-left:10px}
+.cal-row{display:flex;gap:12px;flex-wrap:wrap}
+.legend{background:#f0f4f8;padding:8px 14px;border-radius:8px;margin-bottom:14px;font-size:.78rem;display:flex;gap:14px;flex-wrap:wrap}
+.footer{text-align:center;color:#94a3b8;font-size:.75rem;padding:20px;border-top:1px solid #dde3ed;margin-top:10px}
+</style></head><body>
+<div class="hdr"><h1>✈ ${D.ownerName}'s Travel Schedule</h1><div class="sub">${Y} · Last updated ${nowFmt}</div></div>
+<div class="content">
+<div class="stats">
+  <div class="stat" style="background:#dbeafe;color:#1e40af">Nevada: <strong>${nv} days</strong></div>
+  <div class="stat" style="background:#fef3c7;color:#92400e">California: <strong>${ca} days</strong></div>
+  <div class="stat" style="background:#f3e8ff;color:#6b21a8">Outside NV/CA: <strong>${out} days</strong></div>
+  <div class="stat" style="background:#f1f5f9;color:#475569">Logged: <strong>${nv+ca+out} / ${diy(Y)}</strong> days</div>
+</div>
+<div class="sec">Upcoming Flights</div>
+<table><thead><tr><th>Date</th><th>Route</th><th>Flight #</th><th>Notes</th></tr></thead><tbody>${flRows}</tbody></table>
+<div class="sec">Monthly Statistics</div>
+${buildStatsTableHTML(days)}
+<div class="sec" style="margin-top:24px">3-Month Calendar</div>
+<div class="legend"><span>🟦 Nevada</span><span>🟧 California</span><span>🟪 Outside NV/CA</span></div>
+<div class="cal-row">${calHtml}</div>
+</div>
+<div class="footer">Generated by Travel Location Tracker · ${nowFmt}</div>
+</body></html>`;
+
+  dlFile(`travel-schedule-${Y}-${fmt(now)}.html`, html, 'text/html');
+  toast('Shareable page exported! Upload it to Google Drive and share the link.');
+}
+
+// ── Tax Archive PDF ──────────────────────────────────────────────────────────
+function archivePDF() {
+  const {days, flights} = yd();
+  const generated = new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+  // Build monthly stats for both modes
+  const annual = {cal:{nv:0,ca:0,out:0,unk:0,tot:0}, wd:{nv:0,ca:0,out:0,unk:0,tot:0}};
+  const pdfNotes = yd().notes||{};
+  let calRows = '', wdRows = '';
+  for (let m = 0; m < 12; m++) {
+    const r = computeMonthStats(m);
+    const cLog = r.calNV+r.calCA+r.calOUT, wLog = r.wdNV+r.wdCA+r.wdOUT;
+    const _pn = pdfNotes[m];
+    const _pnText = _pn && typeof _pn==='object' && _pn.shared ? _pn.text : (typeof _pn==='string' && false ? _pn : '');
+    const noteCell = _pnText ? `<tr><td class="ml" style="font-weight:400;font-style:italic;color:#64748b;font-size:.78rem;padding-top:2px;padding-bottom:6px" colspan="9">📝 ${_pnText}</td></tr>` : '';
+    calRows += `<tr><td class="ml">${MONTHS[m]}</td><td>${r.total}</td>
+      <td>${r.calNV}</td><td>${pct(r.calNV,cLog)}</td>
+      <td>${r.calCA}</td><td>${pct(r.calCA,cLog)}</td>
+      <td>${r.calOUT}</td><td>${pct(r.calOUT,cLog)}</td>
+      <td>${r.calUnk}</td></tr>${noteCell}`;
+    wdRows += `<tr><td class="ml">${MONTHS[m]}</td><td>${r.wdTotal}</td>
+      <td>${r.wdNV}</td><td>${pct(r.wdNV,wLog)}</td>
+      <td>${r.wdCA}</td><td>${pct(r.wdCA,wLog)}</td>
+      <td>${r.wdOUT}</td><td>${pct(r.wdOUT,wLog)}</td>
+      <td>${r.wdUnk}</td></tr>${noteCell}`;
+    annual.cal.tot+=r.total; annual.cal.nv+=r.calNV; annual.cal.ca+=r.calCA; annual.cal.out+=r.calOUT; annual.cal.unk+=r.calUnk;
+    annual.wd.tot+=r.wdTotal; annual.wd.nv+=r.wdNV; annual.wd.ca+=r.wdCA; annual.wd.out+=r.wdOUT; annual.wd.unk+=r.wdUnk;
+  }
+  const cLog = annual.cal.nv+annual.cal.ca+annual.cal.out;
+  const wLog = annual.wd.nv+annual.wd.ca+annual.wd.out;
+  const calFoot = `<tr class="foot"><td class="ml">ANNUAL TOTAL</td><td>${annual.cal.tot}</td>
+    <td>${annual.cal.nv}</td><td>${pct(annual.cal.nv,cLog)}</td>
+    <td>${annual.cal.ca}</td><td>${pct(annual.cal.ca,cLog)}</td>
+    <td>${annual.cal.out}</td><td>${pct(annual.cal.out,cLog)}</td>
+    <td>${annual.cal.unk}</td></tr>`;
+  const wdFoot = `<tr class="foot"><td class="ml">ANNUAL TOTAL</td><td>${annual.wd.tot}</td>
+    <td>${annual.wd.nv}</td><td>${pct(annual.wd.nv,wLog)}</td>
+    <td>${annual.wd.ca}</td><td>${pct(annual.wd.ca,wLog)}</td>
+    <td>${annual.wd.out}</td><td>${pct(annual.wd.out,wLog)}</td>
+    <td>${annual.wd.unk}</td></tr>`;
+
+  const statsHead = `<thead>
+    <tr class="grp"><th class="ml">Month</th><th>Total</th>
+      <th colspan="2" class="nv">Nevada</th>
+      <th colspan="2" class="ca">California</th>
+      <th colspan="2" class="out">Outside NV/CA</th>
+      <th class="unk">Unlogged</th></tr>
+    <tr class="sub"><th class="ml"></th><th>Days</th>
+      <th class="nv">Days</th><th class="nv">%</th>
+      <th class="ca">Days</th><th class="ca">%</th>
+      <th class="out">Days</th><th class="out">%</th>
+      <th class="unk">Days</th></tr></thead>`;
+
+  // Flight log — all flights sorted by date
+  const allFlights = [...flights].sort((a,b)=>a.date.localeCompare(b.date));
+  let flightRows = allFlights.length === 0
+    ? '<tr><td colspan="4" style="text-align:center;color:#888;font-style:italic;">No flights logged</td></tr>'
+    : allFlights.map(f => {
+        const d = pd(f.date);
+        const label = `${DOW3[d.getDay()]}, ${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+        return `<tr><td>${label}</td><td>${f.from} → ${f.to}</td><td>${f.num||'—'}</td><td>${f.notes||''}</td></tr>`;
+      }).join('');
+
+  // Annual summary boxes
+  const loggedCalDays = annual.cal.nv + annual.cal.ca + annual.cal.out;
+  const loggedWdDays  = annual.wd.nv  + annual.wd.ca  + annual.wd.out;
+
+  const html = `<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>State Tax Location Record — ${Y} — ${D.ownerName}</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,Helvetica,sans-serif;font-size:10pt;color:#111;padding:0.6in 0.7in;line-height:1.4}
+  h1{font-size:15pt;color:#1e3a5f;border-bottom:2.5px solid #1e3a5f;padding-bottom:6px;margin-bottom:4px}
+  .meta{font-size:8.5pt;color:#555;margin-bottom:18px}
+  h2{font-size:11pt;color:#1e3a5f;margin:20px 0 8px;border-left:4px solid #2563eb;padding-left:8px}
+  .summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+  .sbox{border:1px solid #dde3ed;border-radius:6px;padding:10px 12px;background:#f8fafc;text-align:center}
+  .sbox .num{font-size:20pt;font-weight:700;color:#1e3a5f}
+  .sbox .lbl{font-size:7.5pt;color:#555;margin-top:2px}
+  .sbox .pct{font-size:9pt;color:#2563eb;font-weight:600}
+  table{width:100%;border-collapse:collapse;font-size:8.5pt;margin-bottom:6px}
+  thead tr.grp th{background:#1e3a5f;color:#fff;padding:5px 7px;text-align:center;font-size:7.5pt;text-transform:uppercase;letter-spacing:.04em}
+  thead tr.grp th.ml{text-align:left}
+  thead tr.sub th{background:#e8eef7;color:#1e3a5f;padding:4px 7px;text-align:center;font-size:7.5pt;border-bottom:1.5px solid #c7d4e8}
+  thead tr.sub th.ml{text-align:left}
+  th.nv,td.nv-d,td.nv-p{color:#1e40af} th.ca,td.ca-d,td.ca-p{color:#92400e} th.out,td.out-d,td.out-p{color:#6b21a8} th.unk{color:#888}
+  tbody tr td{padding:5px 7px;border-bottom:1px solid #f0f0f0;text-align:center}
+  tbody tr td.ml{text-align:left;font-weight:600;color:#1e3a5f;background:#f8fafc}
+  tbody tr:nth-child(even) td{background:#fafbfc} tbody tr:nth-child(even) td.ml{background:#f3f6fb}
+  tr.foot td{background:#1e3a5f;color:#fff;font-weight:700;padding:6px 7px;text-align:center;border:none}
+  tr.foot td.ml{background:#162d47;color:#93c5fd;text-align:left}
+  .flight-table thead th{background:#374151;color:#fff;padding:5px 8px;text-align:left;font-size:8pt}
+  .flight-table tbody td{text-align:left;padding:5px 8px;border-bottom:1px solid #f0f0f0}
+  .note{font-size:7.5pt;color:#666;margin-top:4px;font-style:italic}
+  .disclaimer{margin-top:28px;padding:10px 12px;background:#fffbeb;border:1px solid #fcd34d;border-radius:6px;font-size:8pt;color:#78350f}
+  @media print{
+    body{padding:0.5in 0.6in}
+    @page{size:letter;margin:0.5in 0.6in}
+    h2{page-break-after:avoid}
+    table{page-break-inside:auto}
+    tr{page-break-inside:avoid}
+    .no-break{page-break-inside:avoid}
+  }
+</style></head><body>
+
+<h1>State Tax Location Record &mdash; Tax Year ${Y}</h1>
+<div class="meta">
+  Prepared for: <strong>${D.ownerName}</strong> &nbsp;|&nbsp;
+  Generated: ${generated} &nbsp;|&nbsp;
+  Purpose: State Income Tax Withholding &amp; Multi-State Residency Documentation
+</div>
+
+<h2>Annual Summary</h2>
+<div class="summary-grid no-break">
+  <div class="sbox"><div class="num">${annual.cal.tot}</div><div class="lbl">Total Calendar Days</div><div class="pct">${Y}</div></div>
+  <div class="sbox"><div class="num" style="color:#1e40af">${annual.cal.nv}</div><div class="lbl">Nevada Calendar Days</div><div class="pct" style="color:#1e40af">${pct(annual.cal.nv,loggedCalDays)}</div></div>
+  <div class="sbox"><div class="num" style="color:#92400e">${annual.cal.ca}</div><div class="lbl">California Calendar Days</div><div class="pct" style="color:#92400e">${pct(annual.cal.ca,loggedCalDays)}</div></div>
+  <div class="sbox"><div class="num" style="color:#6b21a8">${annual.cal.out}</div><div class="lbl">Outside NV/CA Days</div><div class="pct" style="color:#6b21a8">${pct(annual.cal.out,loggedCalDays)}</div></div>
+  <div class="sbox"><div class="num">${annual.wd.tot}</div><div class="lbl">Total Work Days (M–F)</div><div class="pct">${Y}</div></div>
+  <div class="sbox"><div class="num" style="color:#1e40af">${annual.wd.nv}</div><div class="lbl">Nevada Work Days</div><div class="pct" style="color:#1e40af">${pct(annual.wd.nv,loggedWdDays)}</div></div>
+  <div class="sbox"><div class="num" style="color:#92400e">${annual.wd.ca}</div><div class="lbl">California Work Days</div><div class="pct" style="color:#92400e">${pct(annual.wd.ca,loggedWdDays)}</div></div>
+  <div class="sbox"><div class="num" style="color:#6b21a8">${annual.wd.out}</div><div class="lbl">Outside NV/CA Work Days</div><div class="pct" style="color:#6b21a8">${pct(annual.wd.out,loggedWdDays)}</div></div>
+</div>
+
+<h2>Monthly Calendar Days (All 7 Days/Week)</h2>
+<table>${statsHead}<tbody>${calRows}</tbody><tfoot>${calFoot}</tfoot></table>
+<p class="note">Percentages are based on logged days only. Unlogged days are not included in percentages.</p>
+
+<h2>Monthly Work Days (Monday–Friday Only)</h2>
+<table>${statsHead}<tbody>${wdRows}</tbody><tfoot>${wdFoot}</tfoot></table>
+<p class="note">Work days = Monday through Friday only. Percentages are based on logged weekdays only.</p>
+
+<h2>Complete Flight Log — ${Y}</h2>
+<table class="flight-table">
+  <thead><tr><th>Date</th><th>Route</th><th>Confirmation #</th><th>Notes</th></tr></thead>
+  <tbody>${flightRows}</tbody>
+</table>
+<p class="note">${allFlights.length} flight record${allFlights.length!==1?'s':''} logged for ${Y}.</p>
+
+<div class="disclaimer">
+  <strong>Tax Documentation Note:</strong> This record was self-maintained using a personal travel tracking tool.
+  It documents the number of days spent in each state for the purpose of multi-state income tax withholding calculations.
+  Retain this document with your ${Y} tax records (W-2s, 1099s, state tax returns).
+  Consult a qualified tax professional regarding multi-state apportionment rules applicable to your situation.
+</div>
+
+<script>window.onload=function(){window.print();};<\/script>
+</body></html>`;
+
+  const win = window.open('','_blank');
+  if (!win) {
+    toast('⚠️ Pop-up blocked — please allow pop-ups for this page and try again.', 5000);
+    return;
+  }
+  win.document.write(html);
+  win.document.close();
+  toast('📄 Tax archive opened — choose "Save as PDF" in the print dialog.');
+}
+
+// ── Email summary ────────────────────────────────────────────────────────────
+function emailSummary() {
+  const {days,flights}=yd();
+  const now=new Date(); const td=today();
+  let nv=0,ca=0,out=0;
+  Object.values(days).forEach(s=>{if(s==='NV')nv++;else if(s==='CA')ca++;else if(s==='OUT')out++;});
+
+  const up=flights.filter(f=>f.date>=td).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,12);
+  const flLines=up.length===0?'  No upcoming flights logged.\n'
+    :up.map(f=>{const d=pd(f.date);return`  ${MON3[d.getMonth()]} ${d.getDate()} — ${f.from}→${f.to}${f.num?' (#'+f.num+')':''}${f.notes?' · '+f.notes:''}`;}).join('\n')+'\n';
+
+  let locLines='';
+  const cur=new Date(now);
+  for(let i=0;i<30;i++){
+    const ds=fmt(cur); const st=days[ds];
+    if(st) locLines+=`  ${DOW3[cur.getDay()]} ${cur.getMonth()+1}/${cur.getDate()} — ${STATE_LABEL[st]}\n`;
+    cur.setDate(cur.getDate()+1);
+  }
+
+  // Build monthly stats — one clear line per month, no column alignment needed
+  const annualC={nv:0,ca:0,out:0,tot:0}, annualW={nv:0,ca:0,out:0,tot:0};
+  const monthNotes = yd().notes||{};
+  let calStatLines = '', wdStatLines = '';
+  for (let m=0;m<12;m++){
+    const r=computeMonthStats(m);
+    const cLog=r.calNV+r.calCA+r.calOUT, wLog=r.wdNV+r.wdCA+r.wdOUT;
+    const noteRaw = monthNotes[m];
+    const noteSharedText = noteRaw && typeof noteRaw==='object' && noteRaw.shared ? noteRaw.text : '';
+    const noteStr = noteSharedText ? `\n    Note: ${noteSharedText}` : '';
+    calStatLines+=`  ${MONTHS[m]}: ${r.total} days  —  NV: ${r.calNV} (${pct(r.calNV,cLog)})  |  CA: ${r.calCA} (${pct(r.calCA,cLog)})  |  Out: ${r.calOUT} (${pct(r.calOUT,cLog)})${noteStr}\n`;
+    wdStatLines+=`  ${MONTHS[m]}: ${r.wdTotal} days  —  NV: ${r.wdNV} (${pct(r.wdNV,wLog)})  |  CA: ${r.wdCA} (${pct(r.wdCA,wLog)})  |  Out: ${r.wdOUT} (${pct(r.wdOUT,wLog)})${noteStr}\n`;
+    annualC.tot+=r.total;annualC.nv+=r.calNV;annualC.ca+=r.calCA;annualC.out+=r.calOUT;
+    annualW.tot+=r.wdTotal;annualW.nv+=r.wdNV;annualW.ca+=r.wdCA;annualW.out+=r.wdOUT;
+  }
+  const cLog=annualC.nv+annualC.ca+annualC.out, wLog=annualW.nv+annualW.ca+annualW.out;
+  calStatLines+=`  ──────────────────────────────────────────────────────\n`;
+  calStatLines+=`  ANNUAL TOTAL: ${annualC.tot} days  —  NV: ${annualC.nv} (${pct(annualC.nv,cLog)})  |  CA: ${annualC.ca} (${pct(annualC.ca,cLog)})  |  Out: ${annualC.out} (${pct(annualC.out,cLog)})\n`;
+  wdStatLines+=`  ──────────────────────────────────────────────────────\n`;
+  wdStatLines+=`  ANNUAL TOTAL: ${annualW.tot} days  —  NV: ${annualW.nv} (${pct(annualW.nv,wLog)})  |  CA: ${annualW.ca} (${pct(annualW.ca,wLog)})  |  Out: ${annualW.out} (${pct(annualW.out,wLog)})\n`;
+
+  const dated=now.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+  const body=`Hi,
+
+Here is a summary of my upcoming travel schedule as of ${dated}:
+
+UPCOMING FLIGHTS
+────────────────────────────────────
+${flLines}
+NEXT 30 DAYS — WHERE I'LL BE
+────────────────────────────────────
+${locLines||'  (No days logged yet for the next 30 days)'}
+${Y} CALENDAR DAYS BY MONTH
+────────────────────────────────────
+${calStatLines}
+${Y} WORK DAYS (MON–FRI) BY MONTH
+────────────────────────────────────
+${wdStatLines}
+Note: Percentages are based on logged days only.
+
+Thanks,
+${D.ownerName}`;
+
+  // mailto: URLs silently fail when the body is too long (~2000 char limit in most browsers).
+  // Fix: copy full body to clipboard, open mailto with subject only, show instructions.
+  const subject = `My Travel Schedule — ${D.ownerName} — ${dated}`;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(body).then(() => {
+      _openMailto(`mailto:?subject=${encodeURIComponent(subject)}`);
+      toast('✅ Email text copied to clipboard! Paste it into the new email and send.');
+    }).catch(() => {
+      // Clipboard API blocked — fall back to a textarea copy trick
+      _fallbackCopy(body, subject);
+    });
+  } else {
+    _fallbackCopy(body, subject);
+  }
+}
+
+// Reliably trigger the OS email client without opening a browser tab
+function _openMailto(href) {
+  const a = document.createElement('a');
+  a.href = href;
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => document.body.removeChild(a), 200);
+}
+
+function _fallbackCopy(body, subject) {
+  // Create a temporary textarea, select all, copy
+  const ta = document.createElement('textarea');
+  ta.value = body;
+  ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  let ok = false;
+  try { ok = document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+  _openMailto(`mailto:?subject=${encodeURIComponent(subject)}`);
+  if (ok) {
+    toast('✅ Email text copied to clipboard! Paste it into the new email and send.');
+  } else {
+    toast('⚠️ Could not copy automatically. Select all text in the box below and copy it manually.', 8000);
+    // Show a modal with the text so the user can copy it themselves
+    _showCopyModal(body);
+  }
+}
+
+function _showCopyModal(body) {
+  let modal = document.getElementById('copyModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'copyModal';
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;';
+    modal.innerHTML = `<div style="background:#fff;border-radius:10px;padding:24px;max-width:680px;width:94%;max-height:80vh;display:flex;flex-direction:column;gap:12px;">
+      <div style="font-weight:700;font-size:1rem;">Copy Email Text</div>
+      <p style="margin:0;font-size:.85rem;color:#555;">Select all text below (Ctrl+A / Cmd+A) and copy, then paste into your email.</p>
+      <textarea id="copyModalTA" style="flex:1;min-height:300px;font-family:monospace;font-size:.78rem;border:1px solid #ccc;border-radius:6px;padding:8px;resize:vertical;"></textarea>
+      <div style="display:flex;gap:8px;justify-content:flex-end;">
+        <button onclick="const t=document.getElementById('copyModalTA');t.select();document.execCommand('copy');this.textContent='Copied!'" style="padding:8px 18px;background:#0066cc;color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;">Copy All</button>
+        <button onclick="document.getElementById('copyModal').remove();" style="padding:8px 18px;background:#e5e7eb;border:none;border-radius:6px;cursor:pointer;">Close</button>
+      </div>
+    </div>`;
+    document.body.appendChild(modal);
+  }
+  document.getElementById('copyModalTA').value = body;
+  modal.style.display = 'flex';
+  setTimeout(() => { const ta = document.getElementById('copyModalTA'); if(ta){ta.focus();ta.select();} }, 100);
+}
+
+// ── JSON backup / restore ────────────────────────────────────────────────────
+function exportJSON() {
+  dlFile(`flight-tracker-backup-${today()}.json`, JSON.stringify(D,null,2), 'application/json');
+  clearDirty();
+  toast('Backup downloaded');
+}
+function importJSON(ev) {
+  const file=ev.target.files[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=e=>{
+    try {
+      const imp=JSON.parse(e.target.result);
+      if(confirm('Replace all current data with this backup?')){D=imp;save();renderCalendar();toast('Data restored');}
+    }catch{alert('Invalid backup file.');}
+  };
+  r.readAsText(file); ev.target.value='';
+}
+function clearYear() {
+  if(!confirm(`Clear all location data for ${Y}? This cannot be undone.`)) return;
+  yd().days={}; save(); renderCalendar(); toast(`${Y} data cleared`);
+}
+
+// ── Google Calendar Sync ─────────────────────────────────────────────────────
+const GCAL_CLIENT_ID = '268717699636-trh89jvqi90tgttak9o5kcnegu65hc5e.apps.googleusercontent.com';
+const GCAL_SCOPE = 'https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.readonly';
+function gcalEventsUrl() {
+  const calId = localStorage.getItem('gcal_calendar_id') || 'primary';
+  return `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calId)}/events`;
+}
+
+let _gisClient = null;
+let _gcalToken = null;
+
+function _gcalEventMap() {
+  try { return JSON.parse(localStorage.getItem('gcal_event_map')||'{}'); } catch{return {};}
+}
+function _gcalSaveMap(m) { localStorage.setItem('gcal_event_map', JSON.stringify(m)); }
+
+function gcalInit() {
+  if (typeof google === 'undefined') { setTimeout(gcalInit, 500); return; }
+  _gisClient = google.accounts.oauth2.initTokenClient({
+    client_id: GCAL_CLIENT_ID,
+    scope: GCAL_SCOPE,
+    callback: resp => {
+      if (resp.error) { toast('⚠️ Google auth error: ' + resp.error); return; }
+      _gcalToken = resp.access_token;
+      localStorage.setItem('gcal_connected','1');
+      updateGCalUI(true);
+      gcalLoadCalendars();
+      toast('Google Calendar connected ✓');
+    }
+  });
+  // Auto-restore connected state
+  if (localStorage.getItem('gcal_connected') === '1') updateGCalUI(true);
+}
+
+function gcalConnect() {
+  if (!_gisClient) { toast('Google auth loading — try again in a moment'); return; }
+  _gisClient.requestAccessToken();
+}
+
+function gcalDisconnect() {
+  if (_gcalToken) google.accounts.oauth2.revoke(_gcalToken, ()=>{});
+  _gcalToken = null;
+  localStorage.removeItem('gcal_connected');
+  updateGCalUI(false);
+  toast('Google Calendar disconnected');
+}
+
+function updateGCalUI(connected) {
+  const bar  = document.getElementById('gcal-status-bar');
+  const dot  = document.getElementById('gcal-dot');
+  const txt  = document.getElementById('gcal-status-txt');
+  const conB = document.getElementById('gcal-connect-btn');
+  const calW = document.getElementById('gcal-cal-wrap');
+  const synB = document.getElementById('gcal-sync-btn');
+  const disB = document.getElementById('gcal-disconnect-btn');
+  if (connected) {
+    bar.className='gcal-status connected'; dot.className='gcal-dot on';
+    txt.textContent='Connected to Google Calendar';
+    conB.style.display='none'; calW.style.display=''; synB.style.display=''; disB.style.display='';
+  } else {
+    bar.className='gcal-status disconnected'; dot.className='gcal-dot off';
+    txt.textContent='Not connected';
+    conB.style.display=''; calW.style.display='none'; synB.style.display='none'; disB.style.display='none';
+  }
+}
+
+async function gcalLoadCalendars() {
+  if (!_gcalToken) return;
+  const r = await fetch('https://www.googleapis.com/calendar/v3/users/me/calendarList?minAccessRole=writer', {
+    headers: {'Authorization':'Bearer '+_gcalToken}
+  });
+  if (!r.ok) return;
+  const data = await r.json();
+  const sel = document.getElementById('gcal-cal-select');
+  const saved = localStorage.getItem('gcal_calendar_id') || 'primary';
+  sel.innerHTML = (data.items||[]).map(c =>
+    `<option value="${c.id}" ${c.id===saved||(!localStorage.getItem('gcal_calendar_id')&&c.primary)?'selected':''}>${c.summary}${c.primary?' (primary)':''}</option>`
+  ).join('');
+  // Auto-save selection so gcalEventsUrl() picks up the right one
+  if (sel.options.length) gcalSaveCalChoice();
+}
+
+function gcalSaveCalChoice() {
+  const sel = document.getElementById('gcal-cal-select');
+  if (sel && sel.value) localStorage.setItem('gcal_calendar_id', sel.value);
+}
+
+function _gcalBuildEvent(f) {
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const hasTime = f.time && f.arrive;
+  const start = hasTime ? {dateTime:`${f.date}T${f.time}:00`,timeZone:tz} : {date:f.date};
+  // If arrive is next-day (arrive < depart) add a day — simple heuristic
+  let arrDate = f.date;
+  if (hasTime && f.arrive < f.time) {
+    const d = new Date(f.date); d.setDate(d.getDate()+1);
+    arrDate = fmt(d);
+  }
+  const end = hasTime ? {dateTime:`${arrDate}T${f.arrive}:00`,timeZone:tz} : {date:f.date};
+  const lines = [
+    f.num  ? `Flight: ${f.num}` : '',
+    f.notes ? `Notes: ${f.notes}` : '',
+    'Synced by Flight Tracker 2.0'
+  ].filter(Boolean);
+  return {
+    summary: `✈ ${f.from} → ${f.to}${f.num?' ('+f.num+')':''}`,
+    description: lines.join('\n'),
+    start, end,
+    colorId: '1' // calendar blue
+  };
+}
+
+async function _gcalRequest(method, url, body) {
+  if (!_gcalToken) { gcalConnect(); return null; }
+  const opts = {
+    method,
+    headers: {'Authorization':'Bearer '+_gcalToken, 'Content-Type':'application/json'}
+  };
+  if (body) opts.body = JSON.stringify(body);
+  const r = await fetch(url, opts);
+  if (r.status === 401) { // token expired
+    _gcalToken = null; gcalConnect();
+    toast('Session expired — please re-authorize Google Calendar');
+    return null;
+  }
+  return r.ok && r.status !== 204 ? r.json() : r;
+}
+
+async function gcalSyncFlight(f) {
+  if (!_gcalToken) return;
+  const map = _gcalEventMap();
+  const event = _gcalBuildEvent(f);
+  let data;
+  if (map[f.id]) {
+    data = await _gcalRequest('PUT', gcalEventsUrl()+'/'+map[f.id], event);
+  } else {
+    data = await _gcalRequest('POST', gcalEventsUrl(), event);
+  }
+  if (data && data.id) { map[f.id]=data.id; _gcalSaveMap(map); }
+}
+
+async function gcalDeleteFlight(flightId) {
+  if (!_gcalToken) return;
+  const map = _gcalEventMap();
+  if (!map[flightId]) return;
+  await _gcalRequest('DELETE', gcalEventsUrl()+'/'+map[flightId]);
+  delete map[flightId]; _gcalSaveMap(map);
+}
+
+async function gcalSyncAll() {
+  if (!_gcalToken) { gcalConnect(); return; }
+  const {flights} = yd();
+  toast('Syncing ' + flights.length + ' flights…');
+  for (const f of flights) await gcalSyncFlight(f);
+  toast('✓ All flights synced to Google Calendar!');
+}
+
+// ── Airport → State map ──────────────────────────────────────────────────────
+const AIRPORT_STATE = {
+  // Nevada
+  RNO:'NV', LAS:'NV', ELY:'NV', BKE:'NV', HSH:'NV',
+  // California
+  LGB:'CA', LAX:'CA', SNA:'CA', SFO:'CA', OAK:'CA', SJC:'CA',
+  BUR:'CA', LGB:'CA', SMF:'CA', FAT:'CA', SBA:'CA', SAN:'CA',
+  ONT:'CA', PSP:'CA', MRY:'CA', ACV:'CA', CIC:'CA', RDD:'CA',
+  // Common OUT destinations you fly
+  AUS:'OUT', DAL:'OUT', HOU:'OUT', MDW:'OUT', ORD:'OUT',
+};
+
+function suggestStateForFlight(date, toCode) {
+  const suggestedState = AIRPORT_STATE[toCode.toUpperCase()];
+  if (!suggestedState) return;
+  const {days} = yd();
+  if (days[date] === suggestedState) return; // already correct, no need to prompt
+  const stateLabel = STATE_LABEL[suggestedState];
+  // Show a non-blocking confirm banner
+  const existing = document.getElementById('state-suggest-banner');
+  if (existing) existing.remove();
+  const banner = document.createElement('div');
+  banner.id = 'state-suggest-banner';
+  banner.style.cssText = 'position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:#1e3a5f;color:#fff;padding:11px 18px;border-radius:12px;font-size:.83rem;font-weight:600;z-index:9998;display:flex;gap:10px;align-items:center;box-shadow:0 4px 14px rgba(0,0,0,.3);white-space:nowrap';
+  const d = pd(date);
+  banner.innerHTML = `<span>Set ${MON3[d.getMonth()]} ${d.getDate()} to ${stateLabel}?</span>
+    <button onclick="applyStateSuggest('${date}','${suggestedState}')" style="background:#2563eb;border:none;color:#fff;padding:4px 12px;border-radius:6px;cursor:pointer;font-weight:700;font-size:.8rem">Yes</button>
+    <button onclick="document.getElementById('state-suggest-banner').remove()" style="background:rgba(255,255,255,.15);border:none;color:#fff;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:.8rem">Skip</button>`;
+  document.body.appendChild(banner);
+  setTimeout(() => { if(banner.parentNode) banner.remove(); }, 9000);
+}
+
+function applyStateSuggest(date, state) {
+  yd().days[date] = state;
+  save(); renderCalendar();
+  document.getElementById('state-suggest-banner')?.remove();
+  toast(`${MON3[pd(date).getMonth()]} ${pd(date).getDate()} set to ${STATE_LABEL[state]} ✓`);
+}
+
+// ── Southwest Email Importer ─────────────────────────────────────────────────
+let _swaFlights = []; // parsed flights pending confirmation
+
+function openSWAImport() {
+  document.getElementById('swa-modal-bg').style.display = 'flex';
+  document.getElementById('swa-paste').value = '';
+  document.getElementById('swa-results').innerHTML = '';
+  document.getElementById('swa-import-btn').style.display = 'none';
+  _swaFlights = [];
+  setTimeout(() => document.getElementById('swa-paste').focus(), 80);
+}
+function closeSWAImport() {
+  document.getElementById('swa-modal-bg').style.display = 'none';
+}
+
+function parseSWAEmail() {
+  const text = document.getElementById('swa-paste').value;
+  _swaFlights = [];
+
+  // Extract confirmation number
+  const confMatch = text.match(/(?:confirmation\s*(?:#|number|no\.?)\s*[:\-]?\s*)([A-Z0-9]{6})/i)
+                 || text.match(/\b([A-Z]{2}[A-Z0-9]{4}|[A-Z0-9]{6})\b/);
+  const conf = confMatch ? confMatch[1].toUpperCase() : '';
+
+  const MON_MAP = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12,
+    january:1,february:2,march:3,april:4,june:6,july:7,august:8,september:9,october:10,november:11,december:12};
+
+  function parseDate(str) {
+    if (!str) return null;
+    let m = str.match(/(\d{4})-(\d{2})-(\d{2})/);
+    if (m) return m[1]+'-'+m[2]+'-'+m[3];
+    m = str.match(/(?:\w+,?\s+)?([A-Za-z]+)\.?\s+(\d{1,2}),?\s+(\d{4})/);
+    if (m) { const mo=MON_MAP[m[1].toLowerCase()]; if(mo) return m[3]+'-'+String(mo).padStart(2,'0')+'-'+String(m[2]).padStart(2,'0'); }
+    m = str.match(/(\d{1,2})\/(\d{1,2})\/(\d{2,4})/);
+    if (m) { const yr=m[3].length===2?'20'+m[3]:m[3]; return yr+'-'+String(m[1]).padStart(2,'0')+'-'+String(m[2]).padStart(2,'0'); }
+    return null;
+  }
+
+  function parseTime(str) {
+    if (!str) return '';
+    const m = str.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+    if (!m) return '';
+    let h=parseInt(m[1]),min=m[2],ampm=m[3].toUpperCase();
+    if(ampm==='PM'&&h!==12)h+=12; if(ampm==='AM'&&h===12)h=0;
+    return String(h).padStart(2,'0')+':'+min;
+  }
+
+  const textCopy = text;
+
+  // Strategy 1: City name "(CODE) to (CODE)" or "CODE → CODE"
+  const routePat = /([A-Z][a-zA-Z\s\/\-]+?)\s*\(([A-Z]{3})\)\s*(?:to|→|->)\s*([A-Z][a-zA-Z\s\/\-]+?)\s*\(([A-Z]{3})\)/g;
+  const arrowPat = /\b([A-Z]{3})\s*(?:→|->|to)\s*([A-Z]{3})\b/g;
+  let routeMatches = [], m2;
+  routePat.lastIndex = 0;
+  while ((m2=routePat.exec(textCopy))!==null) routeMatches.push({from:m2[2],to:m2[4],pos:m2.index});
+  if (routeMatches.length===0) {
+    arrowPat.lastIndex = 0;
+    while ((m2=arrowPat.exec(textCopy))!==null) routeMatches.push({from:m2[1],to:m2[2],pos:m2.index});
+  }
+  routeMatches.forEach(route => {
+    const WIN=350;
+    const win=textCopy.substring(Math.max(0,route.pos-WIN),Math.min(textCopy.length,route.pos+WIN));
+    const dateRx=/(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2},?\s+\d{4}|\d{1,2}\/\d{1,2}\/\d{2,4}/gi;
+    const dates=win.match(dateRx)||[];
+    const dateStr=dates[0]?parseDate(dates[0]):null;
+    const flNum=win.match(/(?:Flight\s+)?(?:WN\s+)?(\d{3,4})/i);
+    const num=flNum?'WN '+flNum[1]:(conf||'');
+    const timeRx=/(\d{1,2}:\d{2}\s*(?:AM|PM))/gi;
+    const times=win.match(timeRx)||[];
+    const depart=times[0]?parseTime(times[0]):'';
+    const arrive=times[1]?parseTime(times[1]):'';
+    if(dateStr&&route.from&&route.to){
+      const dup=_swaFlights.find(f=>f.date===dateStr&&f.from===route.from&&f.to===route.to);
+      if(!dup)_swaFlights.push({date:dateStr,from:route.from,to:route.to,num,time:depart,arrive,notes:'SWA '+conf});
+    }
+  });
+
+  // Strategy 2: Southwest "My Trips" concatenated format
+  // e.g. "Departing 10/7/26 Wednesday" + "Departs3:45PMRNO" + "Flight 3588" + "Arrives5:10PMLGB"
+  if (_swaFlights.length===0) {
+    const sectionRe=/(?:Departing|Returning)\s+(\d{1,2}\/\d{1,2}\/\d{2,4})/gi;
+    let secM; const sections=[];
+    while((secM=sectionRe.exec(textCopy))!==null) sections.push({dateStr:parseDate(secM[1]),pos:secM.index});
+    sections.forEach((sec,si)=>{
+      const secEnd=sections[si+1]?sections[si+1].pos:textCopy.length;
+      const chunk=textCopy.substring(sec.pos,secEnd);
+      const depM=chunk.match(/Departs?\s*(\d{1,2}:\d{2}\s*[AP]M)\s*([A-Z]{3})/i);
+      const arrM=chunk.match(/Arrives?\s*(\d{1,2}:\d{2}\s*[AP]M)\s*([A-Z]{3})/i);
+      const from=depM?depM[2]:''; const to=arrM?arrM[2]:'';
+      const depart=depM?parseTime(depM[1]):''; const arrive=arrM?parseTime(arrM[1]):'';
+      const flM=chunk.match(/Flight\s*(\d{3,4})/i);
+      const num=flM?'WN '+flM[1]:(conf||'');
+      if(sec.dateStr&&from&&to){
+        const dup=_swaFlights.find(f=>f.date===sec.dateStr&&f.from===from&&f.to===to);
+        if(!dup)_swaFlights.push({date:sec.dateStr,from,to,num,time:depart,arrive,notes:'SWA '+(conf||'')});
+      }
+    });
+  }
+  // Strategy 3: Southwest confirmation email format
+  // e.g. "Flight 1:\nWednesday, 10/07/2026\nFLIGHT\nWN #3588\nDEPARTS\nRNO 03:45PM\nARRIVES\nLGB 05:10PM"
+  if (_swaFlights.length===0) {
+    const flSecRe=/Flight\s+\d+:/gi;
+    let fsM; const flSections=[];
+    while((fsM=flSecRe.exec(textCopy))!==null) flSections.push({pos:fsM.index});
+    flSections.forEach((sec,si)=>{
+      const secEnd=flSections[si+1]?flSections[si+1].pos:textCopy.length;
+      const chunk=textCopy.substring(sec.pos,secEnd);
+      const dateM=chunk.match(/\d{1,2}\/\d{1,2}\/\d{2,4}/);
+      const dateStr=dateM?parseDate(dateM[0]):null;
+      const depM=chunk.match(/DEPARTS\s*[\r\n]+\s*([A-Z]{3})\s+(\d{1,2}:\d{2}(?:AM|PM))/i);
+      const arrM=chunk.match(/ARRIVES\s*[\r\n]+\s*([A-Z]{3})\s+(\d{1,2}:\d{2}(?:AM|PM))/i);
+      const from=depM?depM[1]:''; const to=arrM?arrM[1]:'';
+      const depart=depM?parseTime(depM[2]):''; const arrive=arrM?parseTime(arrM[2]):'';
+      const flM=chunk.match(/WN\s*#?\s*(\d{3,4})/i);
+      const num=flM?'WN '+flM[1]:(conf||'');
+      if(dateStr&&from&&to){
+        const dup=_swaFlights.find(f=>f.date===dateStr&&f.from===from&&f.to===to);
+        if(!dup)_swaFlights.push({date:dateStr,from,to,num,time:depart,arrive,notes:'SWA '+(conf||'')});
+      }
+    });
+  }
+
+  // Render results
+  const el=document.getElementById('swa-results');
+  if(!_swaFlights.length){
+    if(text.trim().length>30){
+      el.innerHTML='<div class="swa-no-results">⚠️ Couldn\'t find flight details. Try copying just the trip section including the date line (e.g. "Departing 10/7/26") and the Departs/Arrives lines with airport codes.</div>';
+    } else { el.innerHTML=''; }
+    document.getElementById('swa-import-btn').style.display='none';
+    return;
+  }
+  let html='<div style="font-size:.72rem;font-weight:700;color:#16a34a;margin-bottom:4px">✓ Found '+_swaFlights.length+' flight'+(_swaFlights.length>1?'s':'')+' — review and confirm:</div>';
+  _swaFlights.forEach((f,i)=>{
+    const d=pd(f.date);
+    const dt=DOW3[d.getDay()]+' '+MON3[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
+    const times=f.time&&f.arrive?' · '+fmtTime(f.time)+' → '+fmtTime(f.arrive):f.time?' · '+fmtTime(f.time):'';
+    html+='<div class="swa-flight-card"><div class="swa-flight-info"><div class="swa-flight-route">'+f.from+' → '+f.to+'</div><div class="swa-flight-detail">'+dt+times+' · #'+f.num+'</div></div><button onclick="_swaFlights.splice('+i+',1);parseSWAEmail()" style="background:none;border:none;color:#fca5a5;cursor:pointer;font-size:1rem;padding:4px" title="Remove this flight">✕</button></div>';
+  });
+  el.innerHTML=html;
+  document.getElementById('swa-import-btn').style.display='';
+}
+function confirmSWAImport() {
+  if (!_swaFlights.length) return;
+  const yr = yd();
+  let added = 0;
+  _swaFlights.forEach(f => {
+    // Skip if exact duplicate already exists
+    const dup = yr.flights.find(e => e.date===f.date && e.from===f.from && e.to===f.to);
+    if (!dup) { yr.flights.push({id:Date.now().toString()+(added++), ...f}); added++; }
+  });
+  save(); renderCalendar();
+  closeSWAImport();
+  toast(`✈ ${Math.floor(added/2)||_swaFlights.length} flight${_swaFlights.length>1?'s':''} imported!`);
+  // Switch to All Flights tab to show results
+  const allBtn = [...document.querySelectorAll('.tab')].find(b=>b.textContent.includes('All'));
+  if (allBtn) showTab('all', allBtn);
+}
+
+// ── Utilities ────────────────────────────────────────────────────────────────
+function dlFile(name, content, mime) {
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([content],{type:mime}));
+  a.download=name; a.click();
+}
+function toast(msg, ms=2800) {
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), ms);
+}
+
+// ── Init ─────────────────────────────────────────────────────────────────────
+load();
+document.getElementById('owner-sub').textContent=D.ownerName;
+document.getElementById('fl-date').value=today();
+renderCalendar();
+_savedOnLoad = true; // enable dirty tracking after first render
+gcalInit(); // init Google Calendar auth
+</script>
+</body>
+</html>
