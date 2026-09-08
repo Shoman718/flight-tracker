@@ -8,14 +8,15 @@
 <meta name="apple-mobile-web-app-title" content="Flight Tracker">
 <meta name="theme-color" content="#1a3a5c">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
 <link rel="apple-touch-icon" href="data:image/png;base64,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">
-<title>Flight Tracker 3.0 — Scott Homan</title>
+<title>Flight Tracker 3.1 — Scott Homan</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#eef2f7;color:#222;min-height:100vh}
 
 /* ── Header ─────────────────────────────────────── */
-.app-header{background:linear-gradient(135deg,#1a3a5c 0%,#2563eb 100%);color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.app-header{background:linear-gradient(135deg,#1a3a5c 0%,#2563eb 100%);color:#fff;padding:14px 24px;padding-top:max(14px,env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.25)}
 .app-title{font-size:1.35rem;font-weight:700;letter-spacing:-.01em}
 .app-sub{font-size:.8rem;opacity:.75;margin-top:2px}
 .year-nav{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.15);padding:6px 16px;border-radius:22px}
@@ -143,7 +144,7 @@ hr.divider{border:none;border-top:1px solid #e8edf5;margin:8px 0}
 .stats-toggle-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:5px 13px;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer;font-family:inherit}
 .stats-toggle-btn:hover{background:rgba(255,255,255,.25)}
 /* ── Unsaved indicator ───────────────────────────── */
-#unsaved-dot{display:none;width:9px;height:9px;border-radius:50%;background:#ef4444;box-shadow:0 0 6px rgba(239,68,68,.7);margin-left:6px;flex-shrink:0;animation:pulse 1.4s ease-in-out infinite}
+
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
 .unsaved-wrap{display:flex;align-items:center;gap:4px;font-size:.68rem;color:rgba(255,255,255,.7)}
 
@@ -198,7 +199,7 @@ hr.divider{border:none;border-top:1px solid #e8edf5;margin:8px 0}
 .swa-modal-footer{padding:12px 16px;border-top:1px solid #e8edf5;display:flex;gap:8px;justify-content:flex-end}
 /* ── Mobile (iPhone) ─────────────────────────────── */
 @media(max-width:480px){
-  .app-header{padding:10px 14px}
+  .app-header{padding:10px 14px;padding-top:max(10px,env(safe-area-inset-top))}
   .app-title{font-size:1.1rem}
   .totals-bar{padding:8px 12px;gap:6px}
   .chip{font-size:.76rem;padding:4px 9px}
@@ -223,8 +224,7 @@ hr.divider{border:none;border-top:1px solid #e8edf5;margin:8px 0}
 <div class="app-header">
   <div>
     <div style="display:flex;align-items:center;gap:0">
-      <div class="app-title">✈ Flight Tracker 3.0</div>
-      <div class="unsaved-wrap"><div id="unsaved-dot" title="Unsaved changes — click Backup Data to save"></div></div>
+      <div class="app-title">✈ Flight Tracker 3.1</div>
     </div>
     <div class="app-sub" id="owner-sub">Scott Homan</div>
   </div>
@@ -484,10 +484,7 @@ function yd() {
 }
 
 // ── Persistence ──────────────────────────────────────────────────────────────
-let _savedOnLoad = false;
-function markDirty() { if(_savedOnLoad) document.getElementById('unsaved-dot').style.display='inline-block'; }
-function clearDirty() { document.getElementById('unsaved-dot').style.display='none'; }
-function save() { try { localStorage.setItem('tt_v3', JSON.stringify(D)); markDirty(); } catch(e){} fbSave(); }
+function save() { try { localStorage.setItem('tt_v3', JSON.stringify(D)); } catch(e){} fbSave(); }
 
 function load() {
   try {
@@ -1139,8 +1136,9 @@ function archivePDF() {
         } else {
           const ds = `${Y}-${String(gm+1).padStart(2,'0')}-${String(dayNum).padStart(2,'0')}`;
           const st = days[ds];
-          const bg = st==='NV' ? '#2563eb' : st==='CA' ? '#d97706' : st==='OUT' ? '#7c3aed' : '#f3f4f6';
-          const fg = st ? '#fff' : '#9ca3af';
+          const eff = st || 'NV';
+          const bg = eff==='NV' ? '#2563eb' : eff==='CA' ? '#d97706' : eff==='OUT' ? '#7c3aed' : '#f3f4f6';
+          const fg = '#fff';
           gridHTML += `<td style="padding:2px;text-align:center;background:${bg};color:${fg};font-size:7pt">${dayNum}</td>`;
           dayNum++;
         }
@@ -1387,7 +1385,6 @@ function _showCopyModal(body) {
 // ── JSON backup / restore ────────────────────────────────────────────────────
 function exportJSON() {
   dlFile(`flight-tracker-backup-${today()}.json`, JSON.stringify(D,null,2), 'application/json');
-  clearDirty();
   toast('Backup downloaded');
 }
 function importJSON(ev) {
@@ -1474,10 +1471,21 @@ function updateGCalUI(connected) {
 
 async function gcalLoadCalendars() {
   if (!_gcalToken) return;
-  const r = await fetch('https://www.googleapis.com/calendar/v3/users/me/calendarList?minAccessRole=writer', {
-    headers: {'Authorization':'Bearer '+_gcalToken}
-  });
-  if (!r.ok) return;
+  let r;
+  try {
+    const ctrl = new AbortController();
+    const tid = setTimeout(() => ctrl.abort(), 8000);
+    r = await fetch('https://www.googleapis.com/calendar/v3/users/me/calendarList?minAccessRole=writer', {
+      headers: {'Authorization':'Bearer '+_gcalToken}, signal: ctrl.signal
+    });
+    clearTimeout(tid);
+  } catch(e) {
+    gcalDisconnect();
+    toast('⚠️ Calendar connection lost — reconnect to continue', 5000);
+    return;
+  }
+  if (r.status === 401) { gcalDisconnect(); toast('⚠️ Calendar session expired — reconnect to continue', 5000); return; }
+  if (!r.ok) { toast('⚠️ Calendar error — try reconnecting', 4000); return; }
   const data = await r.json();
   const sel = document.getElementById('gcal-cal-select');
   const saved = localStorage.getItem('gcal_calendar_id') || 'primary';
@@ -1507,7 +1515,7 @@ function _gcalBuildEvent(f) {
   const lines = [
     f.num  ? `Flight: ${f.num}` : '',
     f.notes ? `Notes: ${f.notes}` : '',
-    'Synced by Flight Tracker 3.0'
+    'Synced by Flight Tracker 3.1'
   ].filter(Boolean);
   return {
     summary: `✈ ${f.from} → ${f.to}${f.num?' ('+f.num+')':''}`,
@@ -1776,7 +1784,6 @@ load();
 document.getElementById('owner-sub').textContent=D.ownerName;
 document.getElementById('fl-date').value=today();
 renderCalendar();
-_savedOnLoad = true; // enable dirty tracking after first render
 gcalInit(); // init Google Calendar auth
 
 // ── Firebase Cloud Sync ───────────────────────────────────────────────────────
@@ -1849,7 +1856,9 @@ async function _fbLoadAndListen() {
       Object.keys(cd.years).forEach(yr => { D.years[yr] = cd.years[yr]; });
       if (cd.ownerName) D.ownerName = cd.ownerName;
       try { localStorage.setItem('tt_v3', JSON.stringify(D)); } catch(e){}
-      renderCalendar(); renderStats();
+      const _focused = document.activeElement;
+      const _isTyping = _focused && (_focused.tagName==='TEXTAREA'||_focused.tagName==='INPUT');
+      if (!_isTyping) { renderCalendar(); renderStats(); }
       _fbSetStatus('synced');
       toast('☁️ Synced from another device');
     });
