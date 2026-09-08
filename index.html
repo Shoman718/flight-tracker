@@ -982,7 +982,7 @@ function exportShareable() {
   const up=flights.filter(f=>f.date>=fmt(now)).sort((a,b)=>a.date.localeCompare(b.date));
   const flRows=up.length===0
     ?'<tr><td colspan="4" style="text-align:center;color:#94a3b8;padding:14px">No upcoming flights logged</td></tr>'
-    :up.map(f=>{const d=pd(f.date);return`<tr><td>${MON3[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}</td><td><strong>${f.from} → ${f.to}</strong></td><td>${f.num||'—'}</td><td>${f.notes||'—'}</td></tr>`;}).join('');
+    :up.map(f=>{const d=pd(f.date);const tStr=(f.time&&f.arrive)?' '+fmtTime(f.time)+'–'+fmtTime(f.arrive):(f.time?' dep '+fmtTime(f.time):'');return`<tr><td>${MON3[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}</td><td><strong>${f.from} → ${f.to}</strong></td><td>${f.num||'—'}</td><td>${tStr?tStr+' ':''} ${f.notes||'—'}</td></tr>`;}).join('');
 
   // 3-month calendars
   const COL={NV:'#2563eb',CA:'#d97706',OUT:'#7c3aed'};
@@ -1108,7 +1108,7 @@ function archivePDF() {
     : allFlights.map(f => {
         const d = pd(f.date);
         const label = `${DOW3[d.getDay()]}, ${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
-        return `<tr><td>${label}</td><td>${f.from} → ${f.to}</td><td>${f.num||'—'}</td><td>${f.notes||''}</td></tr>`;
+        const tStr=(f.time&&f.arrive)?' '+fmtTime(f.time)+'–'+fmtTime(f.arrive):(f.time?' dep '+fmtTime(f.time):'');return `<tr><td>${label}</td><td>${f.from} → ${f.to}</td><td>${f.num||'—'}</td><td>${tStr?tStr+(f.notes?' · ':''):''} ${f.notes||''}</td></tr>`;
       }).join('');
 
   // Annual summary boxes
